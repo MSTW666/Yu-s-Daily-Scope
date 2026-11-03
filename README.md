@@ -8,9 +8,7 @@
   <a href="#定制你的版本">定制你的版本</a>
 </div>
 
-![网页与 iPhone 小组件产品示意](assets/product-preview.svg)
-
-*产品示意图。用摄影征集、展览和机器人挑战展示小宇晨报的典型阅读场景。*
+**直接体验** · [打开当前网页版](https://mstw666.github.io/Yu-s-Daily-Scope/) · [查看当前 Scriptable 脚本](scriptable/yus-daily-scope.js)
 
 ## 小宇怎么用
 
