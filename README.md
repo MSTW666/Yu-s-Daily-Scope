@@ -28,47 +28,41 @@ scripts/promote.mjs        把排期文件提升为线上内容
 - **不要**勾选 Add a README / .gitignore / license（本地已经有文件了）
 - 点 **Create repository**
 
-### 2. 把文件推上去
+### 2. 已上线（这一步已经完成，不用再做）
 
-三种方式选一种，**推荐 A**。
+仓库：`https://github.com/MSTW666/Yu-s-Daily-Scope`
 
-**A. 命令行（在 `yus-daily-scope-site` 目录里执行）**
+| 项目 | 地址 / 状态 |
+|---|---|
+| 网页 | https://mstw666.github.io/Yu-s-Daily-Scope/ （已 built） |
+| 数据接口 | https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json （200） |
+| 定时发布 | `每日发布 07:30`，每天北京时间 07:30，已手动触发验证 `success` |
+
+**以后更新内容，最简单**：双击桌面上的 `push-yus-daily-scope.bat`，它会自动 `add` → `commit` → `push` 并打开站点。
+
+**手动推送（命令行）**：
 
 ```bash
-git init
 git add -A
-git commit -m "init: Yu's Daily Scope"
-git branch -M main
-git remote add origin https://github.com/<你的用户名>/yus-daily-scope.git
-git push -u origin main
+git commit -m "update: daily briefing"
+git -c http.proxy=http://127.0.0.1:7897 -c http.sslBackend=openssl push
 ```
 
-推送时会要求账号密码 —— **密码位置要填 Personal Access Token**，不是 GitHub 登录密码。
-生成方式：GitHub 右上头像 → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → 勾 `repo` → 复制那串 `ghp_...`。
+> **国内网络必读**：本机系统代理是 `127.0.0.1:7897`（Clash 类软件）。git 默认不读系统代理，且 Windows 的 `schannel` TLS 后端与该代理不兼容，所以必须显式加上面两个 `-c` 参数。若代理软件没开，会报 `schannel: server closed abruptly` 或 `CONNECT tunnel failed 502` —— 打开代理软件再推即可。端口不是 7897 时，改命令和脚本里那一处数字就行。
+>
+> **认证**：Git Credential Manager 首次会弹窗，选 **Sign in with your browser** 完成一次授权，之后不再需要登录。
 
-**B. GitHub Desktop**：File → Add local repository → 选这个目录 → Publish repository（记得取消勾选 Keep this code private）。
+**其他推送方式**：GitHub Desktop（File → Add local repository → 选目录 → Publish）也行；网页上传 `Add file → Upload files` 只适合看效果，注意拖拽**不会带上 `.github` 隐藏文件夹**，定时任务会缺失。
 
-**C. 网页上传**：仓库页 → Add file → Upload files → 把 `index.html`、`assets/`、`data/`、`scripts/`、`.github/` 全部拖进去 → Commit。
-注意：拖拽上传**不会带上 `.github` 隐藏文件夹**，定时任务会缺；所以 C 只适合先看网页效果。
+### 3. Pages（已开启）
 
-### 3. 打开 Pages
+已设为 `Deploy from a branch` / `main` / `/(root)`。如需重设：仓库 → Settings → Pages。
 
-仓库 → **Settings** → 左侧 **Pages** →
+### 4. 验收（已完成）
 
-- **Source**：`Deploy from a branch`
-- **Branch**：`main` / **`/(root)`** → **Save**
-
-等 30–60 秒，页面上方会出现网址：
-
-```
-https://<你的用户名>.github.io/yus-daily-scope/
-```
-
-### 4. 验收（3 条）
-
-1. 手机浏览器打开上面这个网址 —— 应看到深蓝绿页面、9 条简报、页首问好与机器人
-2. 打开 `https://<你的用户名>.github.io/yus-daily-scope/data/briefing.json` —— 应直接看到一段 JSON
-3. 仓库 **Actions** 标签里能看到 `每日发布 07:30` 这个工作流（没跑过是正常的）
+1. 网页打开 https://mstw666.github.io/Yu-s-Daily-Scope/ —— 深蓝绿页面、9 条简报、页首问好与机器人 ✅
+2. 打开 https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json —— 直接看到 JSON ✅
+3. 仓库 **Actions** 里 `每日发布 07:30` 已 active 且手动运行 success ✅
 
 > 第 2 条很关键：它是 Scriptable 的数据源，能打开就说明链路通了。
 
@@ -141,8 +135,8 @@ node scripts/validate.mjs data/queue/2026-11-05.json
 打开 Scriptable 里的 `yus-daily-scope.js`，只改两行：
 
 ```js
-const API_URL = "https://<你的用户名>.github.io/yus-daily-scope/data/briefing.json";
-const WEB_URL = "https://<你的用户名>.github.io/yus-daily-scope/";
+const API_URL = "https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json";
+const WEB_URL = "https://mstw666.github.io/Yu-s-Daily-Scope/";
 ```
 
 其余不用动：脚本会缓存、判三态（已同步 / 显示缓存 / 非今日）、按小时切换问候语。
