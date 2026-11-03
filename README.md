@@ -3,6 +3,7 @@
   <h1>Yu’s Daily Scope · 小宇晨报</h1>
   <p><strong>每天早上，先看值得你留意的几件事。</strong></p>
   <p>一份可以按个人兴趣定制的每日简报。主屏幕扫读，网页展开，原文一键直达。</p>
+  <a href="https://mstw666.github.io/Yu-s-Daily-Scope/about.html">产品介绍</a> ·
   <a href="https://mstw666.github.io/Yu-s-Daily-Scope/">打开小宇晨报</a> ·
   <a href="scriptable/yus-daily-scope.js">iPhone 小组件</a> ·
   <a href="#定制你的版本">定制你的版本</a>
