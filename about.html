@@ -25,430 +25,6 @@ section{margin-bottom:52px}h2{display:flex;align-items:center;gap:12px;margin:0 
 <article class="card"><img src="assets/yu-1.svg" alt="YU-1 小机器人"><h3>YU-1 · 清晨的简报编辑</h3><p>「我天没亮就醒了，替你翻了一遍。」用一句短问候开场，然后把机会和时间交给读者。</p></article>
 </div></section>
 <section><h2><span class="num">03</span> 定制你的版本</h2><div class="card"><ol><li>选定主题，例如摄影、城市活动或独立开发。</li><li>用排期模板填写标题、摘要、日期与来源。</li><li>安排每日发布，让网页与小组件读取同一份简报。</li></ol><a class="button" href="https://github.com/MSTW666/Yu-s-Daily-Scope">在 GitHub 开始定制 ↗</a></div></section>
-<section aria-label="完整品牌设计稿"><div id="original-0"></div><template id="design-0"><style>
-*{box-sizing:border-box}
-html,.reference-body{margin:0;padding:0}
-.reference-body{
-  background:#F4F3EE;color:#1B2320;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
-  -webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1;
-}
-.page{max-width:1120px;margin:0 auto;padding:56px 40px 100px}
-
-.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #DFDED5}
-.eyebrow{font-size:10px;letter-spacing:.24em;color:#8A9188;text-transform:uppercase;margin-bottom:14px}
-.head h1{margin:0;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-.015em}
-.head h1 span{color:#2C7C7B}
-.head p{margin:10px 0 0;font-size:13px;line-height:1.7;color:#6C746C;max-width:520px}
-.head .tag{font-size:10.5px;letter-spacing:.12em;color:#2C7C7B;border:1px solid #C9D8D2;background:#EDF3EF;border-radius:999px;padding:7px 13px;white-space:nowrap}
-
-.sec{margin-top:64px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
-.sec-head .no{font-size:11px;letter-spacing:.16em;color:#B4803C;font-weight:600}
-.sec-head h2{margin:0;font-size:17px;font-weight:600}
-.sec-head .sub{font-size:12px;color:#8A9188}
-.sec-head .line{flex:1;height:1px;background:#DFDED5;transform:translateY(-4px)}
-
-.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.card{background:#fff;border:1px solid #E6E5DC;border-radius:14px;overflow:hidden}
-.card .stage{height:200px;display:flex;align-items:center;justify-content:center;padding:24px}
-.card .stage.dark{background:radial-gradient(90% 80% at 82% 6%,#12424A 0%,transparent 62%),linear-gradient(158deg,#0B1F2B,#0A2E36 58%,#082F30)}
-.card .cap{padding:12px 18px;border-top:1px solid #EDECE4;font-size:11px;color:#8A9188;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
-.card .cap b{color:#1B2320;font-weight:550;letter-spacing:.02em}
-/* 注入的 SVG 统一按容器缩放；下载文件不带此规则，保留独立尺寸 */
-svg[data-brand]{width:100%;height:100%;display:block}
-#appSign svg{width:100%;height:auto}
-.card .stage svg{width:min(100%,330px);height:auto;display:block}
-.evolve{margin-top:18px;display:flex;align-items:center;gap:22px;background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:16px 20px}
-.evolve .pair{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.evolve .pi{width:52px;height:52px;display:block}
-.evolve .pi svg{width:100%;height:100%}
-.evolve .arw{color:#B4803C;font-size:16px}
-.evolve .tx{font-size:12px;line-height:1.75;color:#5D655D}
-.evolve .tx b{color:#1B2320;font-weight:550}
-
-/* 构造 */
-.build{display:grid;grid-template-columns:320px 1fr;gap:34px;align-items:start}
-.gridbox{position:relative;width:288px;height:288px;background-color:#fff;border:1px solid #E6E5DC;border-radius:10px;overflow:hidden}
-.gridbox .grid{position:absolute;inset:0;background-image:
-  linear-gradient(to right,rgba(44,124,123,.10) 1px,transparent 1px),
-  linear-gradient(to bottom,rgba(44,124,123,.10) 1px,transparent 1px);
-  background-size:36px 36px}
-.gridbox .grid.minor{background-image:
-  linear-gradient(to right,rgba(44,124,123,.045) 1px,transparent 1px),
-  linear-gradient(to bottom,rgba(44,124,123,.045) 1px,transparent 1px);
-  background-size:12px 12px}
-.gridbox .mark{position:absolute;inset:0;width:288px;height:288px}
-.gridbox .anno{position:absolute;inset:0;width:288px;height:288px}
-.spec{list-style:none;margin:0;padding:0}
-.spec li{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:11px 0;border-top:1px solid #E6E5DC;font-size:12.5px;line-height:1.65;color:#5D655D}
-.spec li:first-child{border-top:0;padding-top:0}
-.spec li b{color:#1B2320;font-weight:550}
-.spec .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#2C7C7B}
-
-/* 变体 */
-.four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.v{background:#fff;border:1px solid #E6E5DC;border-radius:12px;overflow:hidden}
-.v .s{height:154px;display:flex;align-items:center;justify-content:center;padding:16px;background:#FAFAF6}
-.v .s.dark{background:#0B1F2B}
-.v .s svg{max-width:100%;max-height:100%;display:block}
-.v .lb{padding:10px 12px;border-top:1px solid #EDECE4;font-size:10.5px;letter-spacing:.06em;color:#6C746C}
-
-/* 最小尺寸 */
-.sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:26px 28px}
-.sz{display:flex;flex-direction:column;align-items:center;gap:12px}
-.sz .box{display:flex;align-items:center;justify-content:center}
-.sz span{font-size:10px;letter-spacing:.08em;color:#8A9188}
-
-/* 色卡 */
-.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.cc{border-radius:12px;overflow:hidden;border:1px solid #E6E5DC;background:#fff}
-.cc .sw{height:88px}
-.cc .tx{padding:12px 14px}
-.cc .tx b{display:block;font-size:12px;font-weight:600}
-.cc .tx code{display:block;margin-top:5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#6C746C}
-.cc .tx span{display:block;margin-top:7px;font-size:10.5px;line-height:1.6;color:#8A9188}
-
-/* 字体规范 */
-.rules{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.rule{background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:20px 22px}
-.rule h3{margin:0 0 12px;font-size:12px;font-weight:600;letter-spacing:.02em}
-.rule p{margin:0;font-size:12px;line-height:1.8;color:#5D655D}
-.rule p + p{margin-top:8px}
-.rule .q{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#2C7C7B}
-
-/* 应用 */
-.apps{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.app{background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:18px}
-.app .t{font-size:10px;letter-spacing:.14em;color:#8A9188;margin-bottom:14px;text-transform:uppercase}
-.widget{height:56px;border-radius:12px;display:flex;align-items:center;gap:9px;padding:0 14px;
-  background:linear-gradient(158deg,rgba(13,31,48,.94),rgba(8,50,52,.92));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)}
-.widget .m{width:26px;height:26px;flex-shrink:0}
-.widget .nm{font-size:12.5px;font-weight:600;color:#F3F0E7;letter-spacing:.01em}
-.widget .dt{margin-left:auto;font-size:9.5px;color:rgba(228,238,234,.42);display:flex;align-items:center;gap:5px}
-.widget .dot{width:4px;height:4px;border-radius:50%;background:#7FC7A8}
-.webbar{height:44px;border-radius:10px;display:flex;align-items:center;gap:8px;padding:0 14px;
-  background:linear-gradient(90deg,#0A1A24,#0C2A31)}
-.webbar .m{width:19px;height:19px}
-.webbar .nm{font-size:11px;font-weight:550;color:#F3F0E7;letter-spacing:.02em}
-.webbar .r{margin-left:auto;font-size:9px;color:rgba(228,238,234,.38);letter-spacing:.06em}
-.icons{display:flex;align-items:center;gap:18px}
-.ic{border-radius:14px;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(90% 80% at 80% 0%,#12424A,transparent 62%),linear-gradient(158deg,#0B1F2B,#082F30);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 8px 20px -12px rgba(10,30,40,.6)}
-.ic svg{width:60%;height:60%}
-.ic-cap{font-size:11px;line-height:1.7;color:#5D655D}
-.ic-cap b{display:block;color:#1B2320;font-weight:550;margin-bottom:2px}
-
-.dos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-.do{display:flex;gap:10px;align-items:flex-start;font-size:11.5px;line-height:1.7;color:#5D655D}
-.do i{font-style:normal;width:16px;height:16px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
-.do.y i{background:#E4EDE4;color:#3F6B48}
-.do.n i{background:#F3E6E2;color:#A85B4B}
-
-/* 文件清单 */
-.files{background:#12303A;border-radius:12px;padding:22px 24px;color:#DDE8E0}
-.files .h{font-size:10px;letter-spacing:.16em;color:#8FC2B8;margin-bottom:14px}
-.files ul{margin:0;padding:0;list-style:none}
-.files li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid rgba(255,255,255,.09);font-size:12px}
-.files li:first-child{border-top:0}
-.files .fn{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#F3D49E}
-.files .ds{color:rgba(226,238,232,.55);font-size:11px;text-align:right}
-.files a{color:#0A1A22;background:#F0C789;border-radius:999px;padding:5px 12px;font-size:10.5px;text-decoration:none;white-space:nowrap;letter-spacing:.04em}
-.files a:hover{background:#F7DDAF}
-
-.foot{margin-top:48px;padding-top:20px;border-top:1px solid #DFDED5;font-size:11px;line-height:1.8;color:#8A9188}
-@media(max-width:900px){
-  .page{padding:32px 20px 60px}
-  .two,.build,.four,.colors,.rules,.apps,.dos{grid-template-columns:1fr}
-  .four{grid-template-columns:repeat(2,1fr)}
-  .colors{grid-template-columns:repeat(2,1fr)}
-}
-</style><div class="reference-body">
-<div class="page">
-
-  <header class="head">
-    <div>
-      <div class="eyebrow">Brand Mark / Visual Identity — v3</div>
-      <h1>Yu's <span>Daily Scope</span></h1>
-      <p>取景器四角负责「看」，框里是一颗带光环的星球：每天都有一个值得看见的世界。一条闭合的倾斜轨道环分前后两层穿过球面，暖黄留给卫星与星点。中文副名沿用「小宇晨报 · 每日机会简报」。</p>
-    </div>
-    <span class="tag">96 × 96 GRID · 3 COLOR SYSTEM</span>
-  </header>
-
-  <!-- 01 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">01</span><h2>主标志</h2><span class="sub">横版锁定 / 浅底与深底反白</span><span class="line"></span></div>
-    <div class="two">
-      <div class="card"><div class="stage" id="lockDark"></div><div class="cap"><b>Primary · 浅底</b><span>深墨蓝 / 蓝绿 / 暖黄</span></div></div>
-      <div class="card"><div class="stage dark" id="lockLight"></div><div class="cap"><b>Reversed · 深底</b><span>暖白 / 亮蓝绿 / 亮暖黄</span></div></div>
-    </div>
-    <div class="evolve" id="evolve"></div>
-  </section>
-
-  <!-- 02 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">02</span><h2>构造</h2><span class="sub">96 单位网格 / 12 单位安全边距</span><span class="line"></span></div>
-    <div class="build">
-      <div class="gridbox">
-        <div class="grid minor"></div><div class="grid"></div>
-        <div class="mark" id="buildMark"></div>
-        <svg class="anno" viewBox="0 0 288 288" fill="none">
-          <rect x="36" y="36" width="216" height="216" stroke="#B4803C" stroke-opacity=".5" stroke-width="1" stroke-dasharray="4 4"/>
-          <circle cx="144" cy="144" r="48" stroke="#B4803C" stroke-opacity=".38" stroke-width="1" stroke-dasharray="3 5"/>
-          <path d="M51 144A93 31.5 0 0 1 237 144" transform="rotate(-14 144 144)" stroke="#B4803C" stroke-opacity=".4" stroke-width="1" stroke-dasharray="3 5"/>
-          <path d="M51 144A93 31.5 0 0 0 237 144" transform="rotate(-14 144 144)" stroke="#B4803C" stroke-opacity=".55" stroke-width="1" stroke-dasharray="3 5"/>
-          <circle cx="144" cy="144" r="2" fill="#B4803C"/>
-        </svg>
-      </div>
-      <ul class="spec">
-        <li><b>网格与安全区</b><span>96 × 96 单位栅格，图形外沿距边界 <span class="mono">12u</span>；虚线方框为取景范围 <span class="mono">72 × 72u</span>。</span></li>
-        <li><b>取景四角</b><span>四段 L 形 bracket，臂长 <span class="mono">20u</span>，线宽 <span class="mono">2.2u</span>，直角端点。这是「摄影」的一半：先框住视野，再看里面有什么。</span></li>
-        <li><b>星球本体</b><span>圆心 <span class="mono">(48,48)</span>，半径 <span class="mono">16u</span>。蓝绿亮面 + 深墨蓝暗面，暗面由一个右偏 <span class="mono">19u</span> 的等圆裁切而成，形成一道晨昏线，光从左上照来。</span></li>
-        <li><b>闭合轨道环</b><span>一条 <span class="mono">rx31 / ry10.5</span> 的椭圆，绕中心旋转 <span class="mono">−14°</span>。上半弧 <span class="mono">32%</span> 透明度留在星球之后，下半弧实色压过球面，两段在左右极值点 <span class="mono">(17,48) / (79,48)</span> 相切闭合——环是完整的一圈，没有首尾相交的尖角，也像镜头前的对焦环。</span></li>
-        <li><b>卫星与星点</b><span>环右端暖黄卫星 <span class="mono">r3.2</span>，恰好盖住两段弧的接缝；右上内侧一颗十字星芒。暖黄仍是「今天」，只是从静止的焦点变成绕行的卫星。</span></li>
-        <li><b>视觉逻辑</b><span>三层递进：取景框（看什么）→ 星球（一整个世界）→ 卫星（今天）。环修正为闭合轨道后，框、球、环、卫星各归其位，不再被读成一张脸。</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 03 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">03</span><h2>变体</h2><span class="sub">纯图标 / 竖版 / 单色 / 反白</span><span class="line"></span></div>
-    <div class="four" id="variants"></div>
-
-    <div class="sizes" style="margin-top:20px" id="sizes"></div>
-
-    <div class="dos">
-      <div class="do y"><i>✓</i><span>最小使用尺寸 <b>16px</b>；16–24px 时四角、球面明暗与暖黄卫星仍可辨识，星芒会弱化为一点。</span></div>
-      <div class="do y"><i>✓</i><span>深色背景一律使用 Reversed 版，星球暗面会融进底色形成一弯亮面，不要直接把浅底版反相。</span></div>
-      <div class="do n"><i>×</i><span>不拉伸、不旋转、不加阴影或外发光，不改三色的相对亮度关系。</span></div>
-      <div class="do n"><i>×</i><span>不把暖黄卫星改成其他颜色，不把轨道环拉平、改成正圆或拆成两条相交弧，也不在图标外加底板。</span></div>
-    </div>
-  </section>
-
-  <!-- 04 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">04</span><h2>色彩</h2><span class="sub">与简报界面共用同一套色</span><span class="line"></span></div>
-    <div class="colors" id="colors"></div>
-  </section>
-
-  <!-- 05 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">05</span><h2>字标规范</h2><span class="sub">克制来自字重对比，不来自花体</span><span class="line"></span></div>
-    <div class="rules">
-      <div class="rule">
-        <h3>主字标</h3>
-        <p><span class="q">Yu's</span> 用 400 字重，<span class="q">Daily Scope</span> 用 600 字重，字号 24.5 / 96 单位，字距 <span class="q">.01em</span>。撇号使用 ASCII 直撇号 <span class="q">'</span>，不是弯引号。</p>
-        <p>推荐 SF Pro Display / Inter / Helvetica Neue；中文副名用 PingFang SC，不与英文主标混排在同一行。</p>
-      </div>
-      <div class="rule">
-        <h3>副标与安全边距</h3>
-        <p><span class="q">MORNING BRIEF · 07:30</span>，字号 8.8，字距 <span class="q">.24em</span>，全大写。这条信息是发布节奏，不随内容变化。</p>
-        <p>横版锁定四周留白 ≥ <span class="q">16px</span>；图标与文字之间的 1px 分隔线不透明度 16%，只起对齐作用，不是装饰线。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">06</span><h2>应用场景</h2><span class="sub">接回小组件与简报网页</span><span class="line"></span></div>
-    <div class="apps">
-      <div class="app">
-        <div class="t">iPhone 小组件页眉</div>
-        <div class="widget">
-          <span class="m" id="appWidget"></span>
-          <span class="nm">Yu's Daily Scope</span>
-          <span class="dt"><span class="dot"></span>09:12</span>
-        </div>
-      </div>
-      <div class="app">
-        <div class="t">移动端网页顶栏</div>
-        <div class="webbar">
-          <span class="m" id="appWeb"></span>
-          <span class="nm">Yu's Daily Scope</span>
-          <span class="r">已同步 09:12　↻</span>
-        </div>
-      </div>
-      <div class="app">
-        <div class="t">App 图标 / 头像 / Favicon</div>
-        <div class="icons" id="appIcons"></div>
-      </div>
-      <div class="app">
-        <div class="t">署名与名片</div>
-        <div style="border:1px solid #EDECE4;border-radius:10px;padding:18px;background:#FAFAF6" id="appSign"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 -->
-  <section class="sec">
-    <div class="sec-head"><span class="no">07</span><h2>文件清单</h2><span class="sub">透明底 SVG / 可直接下载</span><span class="line"></span></div>
-    <div class="files">
-      <div class="h">ASSETS · 5 FILES · SVG 1.1</div>
-      <ul id="fileList"></ul>
-    </div>
-    <div class="foot">
-      命名规范：项目正式英文名写作 <b>Yu's Daily Scope</b>（ASCII 撇号），中文副名「小宇晨报 · 每日机会简报」仅用于说明与本地化场景，不进入标志本体。<br>
-      本页为自包含预览，所有图形由同一份构造参数生成；上方下载按钮导出的 SVG 与目录内文件一致，均为矢量、透明背景、无外链字体。<br>
-      v1（日轨 + 焦点）的 5 个 SVG 归档在 <b>previous-v1/</b>，v2（交叉双弧）归档在 <b>previous-v2/</b>，需要回退或做对比时可直接取用。光环形态的完整推演见 <b>yu-daily-scope-shapes.html</b>。
-    </div>
-  </section>
-
-</div>
-
-</div></template><script>{ const root = document.getElementById("original-0").attachShadow({mode:"open"}); root.append(document.getElementById("design-0").content.cloneNode(true)); (function(document){
-/* ---------- 配色 ---------- */
-const C = {
-  dark : {ink:"#0B1F2B", bright:"#2C7C7B", shadow:"#0B1F2B", ring:"#2C7C7B", amber:"#E6B879", sub:"#2C7C7B", sep:".16"},
-  light: {ink:"#F3F0E7", bright:"#6CC0B2", shadow:"#0A2A31", ring:"#6CC0B2", amber:"#F0C789", sub:"#8FBDB4", sep:".20"},
-  mono : {ink:"#0B1F2B", bright:"#0B1F2B", shadow:"#0B1F2B", ring:"#0B1F2B", amber:"#0B1F2B", sub:"#0B1F2B", sep:".16"}
-};
-const FONT = "-apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif";
-let UID = 0;
-
-function v1Mark(){
-  return '<svg '+SVGOPEN+'viewBox="0 0 96 96" role="img" aria-label="v1">'+
-    '<g fill="none" stroke="#0B1F2B" stroke-width="2.4" stroke-linecap="square">'+
-      '<path d="M12 34V12h22"/><path d="M84 34V12H62"/>'+
-      '<path d="M12 62v22h22"/><path d="M84 62v22H62"/></g>'+
-    '<path d="M26 48A22 22 0 0 1 70 48" fill="none" stroke="#2C7C7B" stroke-width="2.4" stroke-linecap="round"/>'+
-    '<circle cx="70" cy="48" r="2.6" fill="#2C7C7B"/>'+
-    '<circle cx="48" cy="48" r="9" fill="#E6B879"/></svg>';
-}
-
-function markInner(c, mono){
-  const id = "pl" + (++UID);
-  const bo = mono ? ' fill-opacity=".20"' : '';
-  const so = mono ? ' fill-opacity=".55"' : '';
-  const back = mono ? ".22" : ".32";
-  return '' +
-  '<defs><clipPath id="'+id+'"><circle cx="48" cy="48" r="16"/></clipPath></defs>' +
-  '<g fill="none" stroke="'+c.ink+'" stroke-width="2.2" stroke-linecap="square">' +
-    '<path d="M12 32V12h20"/><path d="M84 32V12H64"/>' +
-    '<path d="M12 64v20h20"/><path d="M84 64v20H64"/>' +
-  '</g>' +
-  '<g transform="rotate(-14 48 48)">' +
-    '<path d="M17 48A31 10.5 0 0 1 79 48" fill="none" stroke="'+c.ring+'" stroke-opacity="'+back+'" stroke-width="2.4" stroke-linecap="round"/>' +
-  '</g>' +
-  '<g clip-path="url(#'+id+')">' +
-    '<circle cx="48" cy="48" r="16" fill="'+c.bright+'"'+bo+'/>' +
-    '<circle cx="67" cy="48" r="16" fill="'+c.shadow+'"'+so+'/>' +
-  '</g>' +
-  '<g transform="rotate(-14 48 48)">' +
-    '<path d="M17 48A31 10.5 0 0 0 79 48" fill="none" stroke="'+c.ring+'" stroke-width="2.4" stroke-linecap="round"/>' +
-    '<circle cx="79" cy="48" r="3.2" fill="'+c.amber+'"/>' +
-  '</g>' +
-  '<path d="M68 22.5v7M64.5 26h7" fill="none" stroke="'+c.amber+'" stroke-opacity=".62" stroke-width="1.2" stroke-linecap="round"/>';
-}
-
-const SVGOPEN = 'xmlns="http://www.w3.org/2000/svg" data-brand="1" ';
-
-function v2Mark(){
-  return '<svg viewBox="0 0 96 96" role="img" aria-label="v2">'+
-    '<g fill="none" stroke="#0B1F2B" stroke-width="2.2" stroke-linecap="square">'+
-      '<path d="M12 32V12h20"/><path d="M84 32V12H64"/>'+
-      '<path d="M12 64v20h20"/><path d="M84 64v20H64"/></g>'+
-    '<path d="M20 57Q48 27 76 41" fill="none" stroke="#2C7C7B" stroke-opacity=".30" stroke-width="2.4" stroke-linecap="round"/>'+
-    '<defs><clipPath id="plv2"><circle cx="48" cy="48" r="16"/></clipPath></defs>'+
-    '<g clip-path="url(#plv2)"><circle cx="48" cy="48" r="16" fill="#2C7C7B"/><circle cx="67" cy="48" r="16" fill="#0B1F2B"/></g>'+
-    '<path d="M20 57Q48 69 76 41" fill="none" stroke="#2C7C7B" stroke-width="2.4" stroke-linecap="round"/>'+
-    '<circle cx="66" cy="50" r="3.2" fill="#E6B879"/>'+
-    '<path d="M68 23.5v7M64.5 27h7" fill="none" stroke="#E6B879" stroke-opacity=".62" stroke-width="1.2" stroke-linecap="round"/></svg>';
-}
-
-function markSvg(c, mono){
-  return '<svg '+SVGOPEN+'viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Yu\'s Daily Scope mark">'+
-    '<title>Yu\'s Daily Scope — Mark</title>'+markInner(c,mono)+'</svg>';
-}
-function lockupSvg(c, mono){
-  const subOp = mono ? ' fill-opacity=".55"' : '';
-  return '<svg '+SVGOPEN+'viewBox="0 0 360 96" width="360" height="96" role="img" aria-label="Yu\'s Daily Scope">'+
-    '<title>Yu\'s Daily Scope — Lockup</title>'+
-    '<g transform="translate(4,10) scale(0.79)">'+markInner(c,mono)+'</g>'+
-    '<path d="M106 24V72" stroke="'+c.ink+'" stroke-opacity="'+c.sep+'" stroke-width="1"/>'+
-    '<text x="126" y="47" font-family="'+FONT+'" font-size="24.5" letter-spacing=".01em">'+
-      '<tspan font-weight="400" fill="'+c.ink+'">Yu\'s </tspan><tspan font-weight="600" fill="'+c.ink+'">Daily Scope</tspan></text>'+
-    '<text x="126" y="68" font-family="'+FONT+'" font-size="8.8" font-weight="500" letter-spacing=".24em" fill="'+c.sub+'"'+subOp+'>'+
-      'MORNING BRIEF · 07:30</text></svg>';
-}
-function stackedSvg(c){
-  return '<svg '+SVGOPEN+'viewBox="0 0 300 210" width="300" height="210" role="img" aria-label="Yu\'s Daily Scope">'+
-    '<title>Yu\'s Daily Scope — Stacked</title>'+
-    '<g transform="translate(102,8)">'+markInner(c,false)+'</g>'+
-    '<text x="150" y="152" text-anchor="middle" font-family="'+FONT+'" font-size="23" letter-spacing=".01em">'+
-      '<tspan font-weight="400" fill="'+c.ink+'">Yu\'s </tspan><tspan font-weight="600" fill="'+c.ink+'">Daily Scope</tspan></text>'+
-    '<text x="150" y="176" text-anchor="middle" font-family="'+FONT+'" font-size="8.5" font-weight="500" letter-spacing=".24em" fill="'+c.sub+'">'+
-      'MORNING BRIEF · 07:30</text></svg>';
-}
-
-/* ---------- 01 主标 ---------- */
-document.getElementById("lockDark").innerHTML  = lockupSvg(C.dark, false);
-document.getElementById("lockLight").innerHTML = lockupSvg(C.light, false);
-document.getElementById("evolve").innerHTML =
-  '<div class="pair"><span class="pi">'+v1Mark()+'</span><span class="arw">→</span>'+
-  '<span class="pi">'+v2Mark()+'</span><span class="arw">→</span>'+
-  '<span class="pi">'+markSvg(C.dark,false)+'</span></div>'+
-  '<div class="tx"><b>保留取景框与星球，只把光环的几何改规整。</b><br>'+
-  'v1 是「日轨 + 焦点」；v2 换成星球与交叉双弧，但两条弧首尾相交围出杏仁形，被读成一只眼睛；v3 改为一条闭合的倾斜轨道环——上半在后、下半在前，相切闭合，卫星落在环的接缝上。眼睛感消失，宇宙感保留。</div>';
-
-/* ---------- 02 构造 ---------- */
-document.getElementById("buildMark").innerHTML = markSvg(C.dark, false);
-
-/* ---------- 03 变体 ---------- */
-const variants = [
-  {t:"Mark · 纯图标",       dark:false, html:markSvg(C.dark,false),  css:"width:96px;height:96px"},
-  {t:"Stacked · 竖版",      dark:false, html:stackedSvg(C.dark),     css:"width:150px;height:105px"},
-  {t:"Mono · 单色",         dark:false, html:lockupSvg(C.mono,true),  css:"width:270px;height:72px"},
-  {t:"Reversed · 反白图标", dark:true,  html:markSvg(C.light,false),  css:"width:96px;height:96px"}
-];
-document.getElementById("variants").innerHTML = variants.map(v=>
-  '<div class="v"><div class="s'+(v.dark?' dark':'')+'"><div style="'+v.css+'">'+v.html+'</div></div><div class="lb">'+v.t+'</div></div>'
-).join("");
-
-const sizes = [16,20,24,32,48];
-document.getElementById("sizes").innerHTML = sizes.map(n=>
-  '<div class="sz"><div class="box" style="width:'+n+'px;height:'+n+'px">'+markSvg(C.dark,false)+'</div><span>'+n+' px</span></div>'
-).join("") + '<div style="flex:1;min-width:180px;font-size:11.5px;line-height:1.8;color:#8A9188;align-self:center">16px 下四角、球面与卫星仍可辨识；低于 16px 建议只保留四角与星球轮廓。</div>';
-
-/* ---------- 04 色卡 ---------- */
-const colors = [
-  {n:"Ink 深墨蓝", h:"#0B1F2B", d:"取景四角、星球暗面、主字标；系统的结构色"},
-  {n:"Teal 蓝绿",  h:"#2C7C7B", d:"星球亮面与轨道环、副标；科技感与玻璃质感的来源"},
-  {n:"Amber 暖黄", h:"#E6B879", d:"卫星、星点与截止日期；全系统唯一高饱和点"},
-  {n:"Paper 暖白", h:"#F4F1E8", d:"深底反白版与正文，避免纯白带来的冷硬"}
-];
-document.getElementById("colors").innerHTML = colors.map(c=>
-  '<div class="cc"><div class="sw" style="background:'+c.h+'"></div><div class="tx"><b>'+c.n+'</b><code>'+c.h+'</code><span>'+c.d+'</span></div></div>'
-).join("");
-
-/* ---------- 06 应用 ---------- */
-const lm = () => markSvg(C.light,false);
-document.getElementById("appWidget").innerHTML = lm();
-document.getElementById("appWeb").innerHTML = lm();
-document.getElementById("appIcons").innerHTML =
-  '<div><div class="ic" style="width:76px;height:76px;border-radius:18px">'+lm()+'</div></div>'+
-  '<div><div class="ic" style="width:44px;height:44px;border-radius:11px">'+lm()+'</div></div>'+
-  '<div><div class="ic" style="width:28px;height:28px;border-radius:7px">'+lm()+'</div></div>'+
-  '<div class="ic-cap"><b>76 / 44 / 28 px</b>同一符号等比缩放<br>深色底上卫星保持暖黄</div>';
-document.getElementById("appSign").innerHTML = lockupSvg(C.dark,false);
-
-/* ---------- 07 文件清单（可直接下载） ---------- */
-const files = [
-  {f:"yu-daily-scope-mark.svg",        d:"96 × 96 · 星球版图标 / favicon",  svg:markSvg(C.dark,false)},
-  {f:"yu-daily-scope-logo-dark.svg",   d:"360 × 96 · 主标（浅底）",         svg:lockupSvg(C.dark,false)},
-  {f:"yu-daily-scope-logo-light.svg",  d:"360 × 96 · 反白（深底）",         svg:lockupSvg(C.light,false)},
-  {f:"yu-daily-scope-logo-mono.svg",   d:"360 × 96 · 单色（印刷/水印）",    svg:lockupSvg(C.mono,true)},
-  {f:"yu-daily-scope-logo-stacked.svg",d:"300 × 210 · 竖版（头像/封面）",   svg:stackedSvg(C.dark)}
-];
-document.getElementById("fileList").innerHTML = files.map(x=>
-  '<li><span class="fn">'+x.f+'</span><span class="ds">'+x.d+'</span>'+
-  '<a download="'+x.f+'" href="data:image/svg+xml;charset=utf-8,'+
-    encodeURIComponent(x.svg.replace(' data-brand="1"',''))+'">下载 SVG</a></li>'
-).join("");
-
-})(root); }</script></section>
 <section aria-label="完整界面设计稿"><div id="original-1"></div><template id="design-1"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 :host{
@@ -664,6 +240,14 @@ html,.reference-body{background:#0A0B0C}
 .tbl td.s{width:96px}
 .tag-ok{font-size:9px;letter-spacing:.08em;border:1px solid rgba(99,211,191,.35);color:#63D3BF;border-radius:5px;padding:2px 6px;white-space:nowrap}
 .tag-cc{font-size:9px;letter-spacing:.08em;border:1px solid rgba(255,255,255,.14);color:#8A9390;border-radius:5px;padding:2px 6px;white-space:nowrap}
+
+.reference-body{max-width:100%;min-width:0}
+.page,.wrap{max-width:100%;padding-inline:0}
+.stage{flex-wrap:wrap;gap:24px;justify-content:center}
+.stage > *{min-width:0;max-width:100%}
+.phone,.wcol{max-width:100%}
+.vtitle{flex-wrap:wrap}
+@media(max-width:650px){.grid2{grid-template-columns:minmax(0,1fr)}}
 </style><div class="reference-body">
 <div class="page">
 
@@ -953,6 +537,436 @@ const swA = [["#071016","底 深"],["#0B222A","底 浅"],["#63D3BF","主光"],["
 const swB = [["#08070F","底 深"],["#181234","底 浅"],["#A99BFF","主光"],["#FFC98E","日期"],["#F2EFFA","正文"]];
 document.getElementById("swA").innerHTML = swA.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
 document.getElementById("swB").innerHTML = swB.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
+
+})(root); }</script></section>
+<section aria-label="完整品牌设计稿"><div id="original-0"></div><template id="design-0"><style>
+*{box-sizing:border-box}
+html,.reference-body{margin:0;padding:0}
+.reference-body{
+  background:#F4F3EE;color:#1B2320;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1;
+}
+.page{max-width:1120px;margin:0 auto;padding:56px 40px 100px}
+
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #DFDED5}
+.eyebrow{font-size:10px;letter-spacing:.24em;color:#8A9188;text-transform:uppercase;margin-bottom:14px}
+.head h1{margin:0;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-.015em}
+.head h1 span{color:#2C7C7B}
+.head p{margin:10px 0 0;font-size:13px;line-height:1.7;color:#6C746C;max-width:520px}
+.head .tag{font-size:10.5px;letter-spacing:.12em;color:#2C7C7B;border:1px solid #C9D8D2;background:#EDF3EF;border-radius:999px;padding:7px 13px;white-space:nowrap}
+
+.sec{margin-top:64px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+.sec-head .no{font-size:11px;letter-spacing:.16em;color:#B4803C;font-weight:600}
+.sec-head h2{margin:0;font-size:17px;font-weight:600}
+.sec-head .sub{font-size:12px;color:#8A9188}
+.sec-head .line{flex:1;height:1px;background:#DFDED5;transform:translateY(-4px)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{background:#fff;border:1px solid #E6E5DC;border-radius:14px;overflow:hidden}
+.card .stage{height:200px;display:flex;align-items:center;justify-content:center;padding:24px}
+.card .stage.dark{background:radial-gradient(90% 80% at 82% 6%,#12424A 0%,transparent 62%),linear-gradient(158deg,#0B1F2B,#0A2E36 58%,#082F30)}
+.card .cap{padding:12px 18px;border-top:1px solid #EDECE4;font-size:11px;color:#8A9188;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+.card .cap b{color:#1B2320;font-weight:550;letter-spacing:.02em}
+/* 注入的 SVG 统一按容器缩放；下载文件不带此规则，保留独立尺寸 */
+svg[data-brand]{width:100%;height:100%;display:block}
+#appSign svg{width:100%;height:auto}
+.card .stage svg{width:min(100%,330px);height:auto;display:block}
+.evolve{margin-top:18px;display:flex;align-items:center;gap:22px;background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:16px 20px}
+.evolve .pair{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.evolve .pi{width:52px;height:52px;display:block}
+.evolve .pi svg{width:100%;height:100%}
+.evolve .arw{color:#B4803C;font-size:16px}
+.evolve .tx{font-size:12px;line-height:1.75;color:#5D655D}
+.evolve .tx b{color:#1B2320;font-weight:550}
+
+/* 构造 */
+.build{display:grid;grid-template-columns:320px 1fr;gap:34px;align-items:start}
+.gridbox{position:relative;width:288px;height:288px;background-color:#fff;border:1px solid #E6E5DC;border-radius:10px;overflow:hidden}
+.gridbox .grid{position:absolute;inset:0;background-image:
+  linear-gradient(to right,rgba(44,124,123,.10) 1px,transparent 1px),
+  linear-gradient(to bottom,rgba(44,124,123,.10) 1px,transparent 1px);
+  background-size:36px 36px}
+.gridbox .grid.minor{background-image:
+  linear-gradient(to right,rgba(44,124,123,.045) 1px,transparent 1px),
+  linear-gradient(to bottom,rgba(44,124,123,.045) 1px,transparent 1px);
+  background-size:12px 12px}
+.gridbox .mark{position:absolute;inset:0;width:288px;height:288px}
+.gridbox .anno{position:absolute;inset:0;width:288px;height:288px}
+.spec{list-style:none;margin:0;padding:0}
+.spec li{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:11px 0;border-top:1px solid #E6E5DC;font-size:12.5px;line-height:1.65;color:#5D655D}
+.spec li:first-child{border-top:0;padding-top:0}
+.spec li b{color:#1B2320;font-weight:550}
+.spec .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#2C7C7B}
+
+/* 变体 */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.v{background:#fff;border:1px solid #E6E5DC;border-radius:12px;overflow:hidden}
+.v .s{height:154px;display:flex;align-items:center;justify-content:center;padding:16px;background:#FAFAF6}
+.v .s.dark{background:#0B1F2B}
+.v .s svg{max-width:100%;max-height:100%;display:block}
+.v .lb{padding:10px 12px;border-top:1px solid #EDECE4;font-size:10.5px;letter-spacing:.06em;color:#6C746C}
+
+/* 最小尺寸 */
+.sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:26px 28px}
+.sz{display:flex;flex-direction:column;align-items:center;gap:12px}
+.sz .box{display:flex;align-items:center;justify-content:center}
+.sz span{font-size:10px;letter-spacing:.08em;color:#8A9188}
+
+/* 色卡 */
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cc{border-radius:12px;overflow:hidden;border:1px solid #E6E5DC;background:#fff}
+.cc .sw{height:88px}
+.cc .tx{padding:12px 14px}
+.cc .tx b{display:block;font-size:12px;font-weight:600}
+.cc .tx code{display:block;margin-top:5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#6C746C}
+.cc .tx span{display:block;margin-top:7px;font-size:10.5px;line-height:1.6;color:#8A9188}
+
+/* 字体规范 */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rule{background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:20px 22px}
+.rule h3{margin:0 0 12px;font-size:12px;font-weight:600;letter-spacing:.02em}
+.rule p{margin:0;font-size:12px;line-height:1.8;color:#5D655D}
+.rule p + p{margin-top:8px}
+.rule .q{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#2C7C7B}
+
+/* 应用 */
+.apps{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.app{background:#fff;border:1px solid #E6E5DC;border-radius:12px;padding:18px}
+.app .t{font-size:10px;letter-spacing:.14em;color:#8A9188;margin-bottom:14px;text-transform:uppercase}
+.widget{height:56px;border-radius:12px;display:flex;align-items:center;gap:9px;padding:0 14px;
+  background:linear-gradient(158deg,rgba(13,31,48,.94),rgba(8,50,52,.92));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)}
+.widget .m{width:26px;height:26px;flex-shrink:0}
+.widget .nm{font-size:12.5px;font-weight:600;color:#F3F0E7;letter-spacing:.01em}
+.widget .dt{margin-left:auto;font-size:9.5px;color:rgba(228,238,234,.42);display:flex;align-items:center;gap:5px}
+.widget .dot{width:4px;height:4px;border-radius:50%;background:#7FC7A8}
+.webbar{height:44px;border-radius:10px;display:flex;align-items:center;gap:8px;padding:0 14px;
+  background:linear-gradient(90deg,#0A1A24,#0C2A31)}
+.webbar .m{width:19px;height:19px}
+.webbar .nm{font-size:11px;font-weight:550;color:#F3F0E7;letter-spacing:.02em}
+.webbar .r{margin-left:auto;font-size:9px;color:rgba(228,238,234,.38);letter-spacing:.06em}
+.icons{display:flex;align-items:center;gap:18px}
+.ic{border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(90% 80% at 80% 0%,#12424A,transparent 62%),linear-gradient(158deg,#0B1F2B,#082F30);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 8px 20px -12px rgba(10,30,40,.6)}
+.ic svg{width:60%;height:60%}
+.ic-cap{font-size:11px;line-height:1.7;color:#5D655D}
+.ic-cap b{display:block;color:#1B2320;font-weight:550;margin-bottom:2px}
+
+.dos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.do{display:flex;gap:10px;align-items:flex-start;font-size:11.5px;line-height:1.7;color:#5D655D}
+.do i{font-style:normal;width:16px;height:16px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
+.do.y i{background:#E4EDE4;color:#3F6B48}
+.do.n i{background:#F3E6E2;color:#A85B4B}
+
+/* 文件清单 */
+.files{background:#12303A;border-radius:12px;padding:22px 24px;color:#DDE8E0}
+.files .h{font-size:10px;letter-spacing:.16em;color:#8FC2B8;margin-bottom:14px}
+.files ul{margin:0;padding:0;list-style:none}
+.files li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid rgba(255,255,255,.09);font-size:12px}
+.files li:first-child{border-top:0}
+.files .fn{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:#F3D49E}
+.files .ds{color:rgba(226,238,232,.55);font-size:11px;text-align:right}
+.files a{color:#0A1A22;background:#F0C789;border-radius:999px;padding:5px 12px;font-size:10.5px;text-decoration:none;white-space:nowrap;letter-spacing:.04em}
+.files a:hover{background:#F7DDAF}
+
+.foot{margin-top:48px;padding-top:20px;border-top:1px solid #DFDED5;font-size:11px;line-height:1.8;color:#8A9188}
+@media(max-width:900px){
+  .page{padding:32px 20px 60px}
+  .two,.build,.four,.colors,.rules,.apps,.dos{grid-template-columns:1fr}
+  .four{grid-template-columns:repeat(2,1fr)}
+  .colors{grid-template-columns:repeat(2,1fr)}
+}
+
+.reference-body{background:transparent;color:#edf3ef}
+.page{padding-inline:0}
+.head p,.sec-head .sub{color:#9db6b2}
+.head .tag{background:#0b222a;color:#63d3bf;border-color:#27444a}
+.sec-head .line{background:#27444a}
+</style><div class="reference-body">
+<div class="page">
+
+  <header class="head">
+    <div>
+      <div class="eyebrow">Brand Mark / Visual Identity — v3</div>
+      <h1>Yu's <span>Daily Scope</span></h1>
+      <p>取景器四角负责「看」，框里是一颗带光环的星球：每天都有一个值得看见的世界。一条闭合的倾斜轨道环分前后两层穿过球面，暖黄留给卫星与星点。中文副名沿用「小宇晨报 · 每日机会简报」。</p>
+    </div>
+    <span class="tag">96 × 96 GRID · 3 COLOR SYSTEM</span>
+  </header>
+
+  <!-- 01 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">01</span><h2>主标志</h2><span class="sub">横版锁定 / 浅底与深底反白</span><span class="line"></span></div>
+    <div class="two">
+      <div class="card"><div class="stage" id="lockDark"></div><div class="cap"><b>Primary · 浅底</b><span>深墨蓝 / 蓝绿 / 暖黄</span></div></div>
+      <div class="card"><div class="stage dark" id="lockLight"></div><div class="cap"><b>Reversed · 深底</b><span>暖白 / 亮蓝绿 / 亮暖黄</span></div></div>
+    </div>
+    <div class="evolve" id="evolve"></div>
+  </section>
+
+  <!-- 02 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">02</span><h2>构造</h2><span class="sub">96 单位网格 / 12 单位安全边距</span><span class="line"></span></div>
+    <div class="build">
+      <div class="gridbox">
+        <div class="grid minor"></div><div class="grid"></div>
+        <div class="mark" id="buildMark"></div>
+        <svg class="anno" viewBox="0 0 288 288" fill="none">
+          <rect x="36" y="36" width="216" height="216" stroke="#B4803C" stroke-opacity=".5" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="144" cy="144" r="48" stroke="#B4803C" stroke-opacity=".38" stroke-width="1" stroke-dasharray="3 5"/>
+          <path d="M51 144A93 31.5 0 0 1 237 144" transform="rotate(-14 144 144)" stroke="#B4803C" stroke-opacity=".4" stroke-width="1" stroke-dasharray="3 5"/>
+          <path d="M51 144A93 31.5 0 0 0 237 144" transform="rotate(-14 144 144)" stroke="#B4803C" stroke-opacity=".55" stroke-width="1" stroke-dasharray="3 5"/>
+          <circle cx="144" cy="144" r="2" fill="#B4803C"/>
+        </svg>
+      </div>
+      <ul class="spec">
+        <li><b>网格与安全区</b><span>96 × 96 单位栅格，图形外沿距边界 <span class="mono">12u</span>；虚线方框为取景范围 <span class="mono">72 × 72u</span>。</span></li>
+        <li><b>取景四角</b><span>四段 L 形 bracket，臂长 <span class="mono">20u</span>，线宽 <span class="mono">2.2u</span>，直角端点。这是「摄影」的一半：先框住视野，再看里面有什么。</span></li>
+        <li><b>星球本体</b><span>圆心 <span class="mono">(48,48)</span>，半径 <span class="mono">16u</span>。蓝绿亮面 + 深墨蓝暗面，暗面由一个右偏 <span class="mono">19u</span> 的等圆裁切而成，形成一道晨昏线，光从左上照来。</span></li>
+        <li><b>闭合轨道环</b><span>一条 <span class="mono">rx31 / ry10.5</span> 的椭圆，绕中心旋转 <span class="mono">−14°</span>。上半弧 <span class="mono">32%</span> 透明度留在星球之后，下半弧实色压过球面，两段在左右极值点 <span class="mono">(17,48) / (79,48)</span> 相切闭合——环是完整的一圈，没有首尾相交的尖角，也像镜头前的对焦环。</span></li>
+        <li><b>卫星与星点</b><span>环右端暖黄卫星 <span class="mono">r3.2</span>，恰好盖住两段弧的接缝；右上内侧一颗十字星芒。暖黄仍是「今天」，只是从静止的焦点变成绕行的卫星。</span></li>
+        <li><b>视觉逻辑</b><span>三层递进：取景框（看什么）→ 星球（一整个世界）→ 卫星（今天）。环修正为闭合轨道后，框、球、环、卫星各归其位，不再被读成一张脸。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">03</span><h2>变体</h2><span class="sub">纯图标 / 竖版 / 单色 / 反白</span><span class="line"></span></div>
+    <div class="four" id="variants"></div>
+
+    <div class="sizes" style="margin-top:20px" id="sizes"></div>
+
+    <div class="dos">
+      <div class="do y"><i>✓</i><span>最小使用尺寸 <b>16px</b>；16–24px 时四角、球面明暗与暖黄卫星仍可辨识，星芒会弱化为一点。</span></div>
+      <div class="do y"><i>✓</i><span>深色背景一律使用 Reversed 版，星球暗面会融进底色形成一弯亮面，不要直接把浅底版反相。</span></div>
+      <div class="do n"><i>×</i><span>不拉伸、不旋转、不加阴影或外发光，不改三色的相对亮度关系。</span></div>
+      <div class="do n"><i>×</i><span>不把暖黄卫星改成其他颜色，不把轨道环拉平、改成正圆或拆成两条相交弧，也不在图标外加底板。</span></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">04</span><h2>色彩</h2><span class="sub">与简报界面共用同一套色</span><span class="line"></span></div>
+    <div class="colors" id="colors"></div>
+  </section>
+
+  <!-- 05 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">05</span><h2>字标规范</h2><span class="sub">克制来自字重对比，不来自花体</span><span class="line"></span></div>
+    <div class="rules">
+      <div class="rule">
+        <h3>主字标</h3>
+        <p><span class="q">Yu's</span> 用 400 字重，<span class="q">Daily Scope</span> 用 600 字重，字号 24.5 / 96 单位，字距 <span class="q">.01em</span>。撇号使用 ASCII 直撇号 <span class="q">'</span>，不是弯引号。</p>
+        <p>推荐 SF Pro Display / Inter / Helvetica Neue；中文副名用 PingFang SC，不与英文主标混排在同一行。</p>
+      </div>
+      <div class="rule">
+        <h3>副标与安全边距</h3>
+        <p><span class="q">MORNING BRIEF · 07:30</span>，字号 8.8，字距 <span class="q">.24em</span>，全大写。这条信息是发布节奏，不随内容变化。</p>
+        <p>横版锁定四周留白 ≥ <span class="q">16px</span>；图标与文字之间的 1px 分隔线不透明度 16%，只起对齐作用，不是装饰线。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">06</span><h2>应用场景</h2><span class="sub">接回小组件与简报网页</span><span class="line"></span></div>
+    <div class="apps">
+      <div class="app">
+        <div class="t">iPhone 小组件页眉</div>
+        <div class="widget">
+          <span class="m" id="appWidget"></span>
+          <span class="nm">Yu's Daily Scope</span>
+          <span class="dt"><span class="dot"></span>09:12</span>
+        </div>
+      </div>
+      <div class="app">
+        <div class="t">移动端网页顶栏</div>
+        <div class="webbar">
+          <span class="m" id="appWeb"></span>
+          <span class="nm">Yu's Daily Scope</span>
+          <span class="r">已同步 09:12　↻</span>
+        </div>
+      </div>
+      <div class="app">
+        <div class="t">App 图标 / 头像 / Favicon</div>
+        <div class="icons" id="appIcons"></div>
+      </div>
+      <div class="app">
+        <div class="t">署名与名片</div>
+        <div style="border:1px solid #EDECE4;border-radius:10px;padding:18px;background:#FAFAF6" id="appSign"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sec">
+    <div class="sec-head"><span class="no">07</span><h2>文件清单</h2><span class="sub">透明底 SVG / 可直接下载</span><span class="line"></span></div>
+    <div class="files">
+      <div class="h">ASSETS · 5 FILES · SVG 1.1</div>
+      <ul id="fileList"></ul>
+    </div>
+    <div class="foot">
+      命名规范：项目正式英文名写作 <b>Yu's Daily Scope</b>（ASCII 撇号），中文副名「小宇晨报 · 每日机会简报」仅用于说明与本地化场景，不进入标志本体。<br>
+      本页为自包含预览，所有图形由同一份构造参数生成；上方下载按钮导出的 SVG 与目录内文件一致，均为矢量、透明背景、无外链字体。<br>
+      v1（日轨 + 焦点）的 5 个 SVG 归档在 <b>previous-v1/</b>，v2（交叉双弧）归档在 <b>previous-v2/</b>，需要回退或做对比时可直接取用。光环形态的完整推演见 <b>yu-daily-scope-shapes.html</b>。
+    </div>
+  </section>
+
+</div>
+
+</div></template><script>{ const root = document.getElementById("original-0").attachShadow({mode:"open"}); root.append(document.getElementById("design-0").content.cloneNode(true)); (function(document){
+/* ---------- 配色 ---------- */
+const C = {
+  dark : {ink:"#0B1F2B", bright:"#2C7C7B", shadow:"#0B1F2B", ring:"#2C7C7B", amber:"#E6B879", sub:"#2C7C7B", sep:".16"},
+  light: {ink:"#F3F0E7", bright:"#6CC0B2", shadow:"#0A2A31", ring:"#6CC0B2", amber:"#F0C789", sub:"#8FBDB4", sep:".20"},
+  mono : {ink:"#0B1F2B", bright:"#0B1F2B", shadow:"#0B1F2B", ring:"#0B1F2B", amber:"#0B1F2B", sub:"#0B1F2B", sep:".16"}
+};
+const FONT = "-apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif";
+let UID = 0;
+
+function v1Mark(){
+  return '<svg '+SVGOPEN+'viewBox="0 0 96 96" role="img" aria-label="v1">'+
+    '<g fill="none" stroke="#0B1F2B" stroke-width="2.4" stroke-linecap="square">'+
+      '<path d="M12 34V12h22"/><path d="M84 34V12H62"/>'+
+      '<path d="M12 62v22h22"/><path d="M84 62v22H62"/></g>'+
+    '<path d="M26 48A22 22 0 0 1 70 48" fill="none" stroke="#2C7C7B" stroke-width="2.4" stroke-linecap="round"/>'+
+    '<circle cx="70" cy="48" r="2.6" fill="#2C7C7B"/>'+
+    '<circle cx="48" cy="48" r="9" fill="#E6B879"/></svg>';
+}
+
+function markInner(c, mono){
+  const id = "pl" + (++UID);
+  const bo = mono ? ' fill-opacity=".20"' : '';
+  const so = mono ? ' fill-opacity=".55"' : '';
+  const back = mono ? ".22" : ".32";
+  return '' +
+  '<defs><clipPath id="'+id+'"><circle cx="48" cy="48" r="16"/></clipPath></defs>' +
+  '<g fill="none" stroke="'+c.ink+'" stroke-width="2.2" stroke-linecap="square">' +
+    '<path d="M12 32V12h20"/><path d="M84 32V12H64"/>' +
+    '<path d="M12 64v20h20"/><path d="M84 64v20H64"/>' +
+  '</g>' +
+  '<g transform="rotate(-14 48 48)">' +
+    '<path d="M17 48A31 10.5 0 0 1 79 48" fill="none" stroke="'+c.ring+'" stroke-opacity="'+back+'" stroke-width="2.4" stroke-linecap="round"/>' +
+  '</g>' +
+  '<g clip-path="url(#'+id+')">' +
+    '<circle cx="48" cy="48" r="16" fill="'+c.bright+'"'+bo+'/>' +
+    '<circle cx="67" cy="48" r="16" fill="'+c.shadow+'"'+so+'/>' +
+  '</g>' +
+  '<g transform="rotate(-14 48 48)">' +
+    '<path d="M17 48A31 10.5 0 0 0 79 48" fill="none" stroke="'+c.ring+'" stroke-width="2.4" stroke-linecap="round"/>' +
+    '<circle cx="79" cy="48" r="3.2" fill="'+c.amber+'"/>' +
+  '</g>' +
+  '<path d="M68 22.5v7M64.5 26h7" fill="none" stroke="'+c.amber+'" stroke-opacity=".62" stroke-width="1.2" stroke-linecap="round"/>';
+}
+
+const SVGOPEN = 'xmlns="http://www.w3.org/2000/svg" data-brand="1" ';
+
+function v2Mark(){
+  return '<svg viewBox="0 0 96 96" role="img" aria-label="v2">'+
+    '<g fill="none" stroke="#0B1F2B" stroke-width="2.2" stroke-linecap="square">'+
+      '<path d="M12 32V12h20"/><path d="M84 32V12H64"/>'+
+      '<path d="M12 64v20h20"/><path d="M84 64v20H64"/></g>'+
+    '<path d="M20 57Q48 27 76 41" fill="none" stroke="#2C7C7B" stroke-opacity=".30" stroke-width="2.4" stroke-linecap="round"/>'+
+    '<defs><clipPath id="plv2"><circle cx="48" cy="48" r="16"/></clipPath></defs>'+
+    '<g clip-path="url(#plv2)"><circle cx="48" cy="48" r="16" fill="#2C7C7B"/><circle cx="67" cy="48" r="16" fill="#0B1F2B"/></g>'+
+    '<path d="M20 57Q48 69 76 41" fill="none" stroke="#2C7C7B" stroke-width="2.4" stroke-linecap="round"/>'+
+    '<circle cx="66" cy="50" r="3.2" fill="#E6B879"/>'+
+    '<path d="M68 23.5v7M64.5 27h7" fill="none" stroke="#E6B879" stroke-opacity=".62" stroke-width="1.2" stroke-linecap="round"/></svg>';
+}
+
+function markSvg(c, mono){
+  return '<svg '+SVGOPEN+'viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Yu\'s Daily Scope mark">'+
+    '<title>Yu\'s Daily Scope — Mark</title>'+markInner(c,mono)+'</svg>';
+}
+function lockupSvg(c, mono){
+  const subOp = mono ? ' fill-opacity=".55"' : '';
+  return '<svg '+SVGOPEN+'viewBox="0 0 360 96" width="360" height="96" role="img" aria-label="Yu\'s Daily Scope">'+
+    '<title>Yu\'s Daily Scope — Lockup</title>'+
+    '<g transform="translate(4,10) scale(0.79)">'+markInner(c,mono)+'</g>'+
+    '<path d="M106 24V72" stroke="'+c.ink+'" stroke-opacity="'+c.sep+'" stroke-width="1"/>'+
+    '<text x="126" y="47" font-family="'+FONT+'" font-size="24.5" letter-spacing=".01em">'+
+      '<tspan font-weight="400" fill="'+c.ink+'">Yu\'s </tspan><tspan font-weight="600" fill="'+c.ink+'">Daily Scope</tspan></text>'+
+    '<text x="126" y="68" font-family="'+FONT+'" font-size="8.8" font-weight="500" letter-spacing=".24em" fill="'+c.sub+'"'+subOp+'>'+
+      'MORNING BRIEF · 07:30</text></svg>';
+}
+function stackedSvg(c){
+  return '<svg '+SVGOPEN+'viewBox="0 0 300 210" width="300" height="210" role="img" aria-label="Yu\'s Daily Scope">'+
+    '<title>Yu\'s Daily Scope — Stacked</title>'+
+    '<g transform="translate(102,8)">'+markInner(c,false)+'</g>'+
+    '<text x="150" y="152" text-anchor="middle" font-family="'+FONT+'" font-size="23" letter-spacing=".01em">'+
+      '<tspan font-weight="400" fill="'+c.ink+'">Yu\'s </tspan><tspan font-weight="600" fill="'+c.ink+'">Daily Scope</tspan></text>'+
+    '<text x="150" y="176" text-anchor="middle" font-family="'+FONT+'" font-size="8.5" font-weight="500" letter-spacing=".24em" fill="'+c.sub+'">'+
+      'MORNING BRIEF · 07:30</text></svg>';
+}
+
+/* ---------- 01 主标 ---------- */
+document.getElementById("lockDark").innerHTML  = lockupSvg(C.dark, false);
+document.getElementById("lockLight").innerHTML = lockupSvg(C.light, false);
+document.getElementById("evolve").innerHTML =
+  '<div class="pair"><span class="pi">'+v1Mark()+'</span><span class="arw">→</span>'+
+  '<span class="pi">'+v2Mark()+'</span><span class="arw">→</span>'+
+  '<span class="pi">'+markSvg(C.dark,false)+'</span></div>'+
+  '<div class="tx"><b>保留取景框与星球，只把光环的几何改规整。</b><br>'+
+  'v1 是「日轨 + 焦点」；v2 换成星球与交叉双弧，但两条弧首尾相交围出杏仁形，被读成一只眼睛；v3 改为一条闭合的倾斜轨道环——上半在后、下半在前，相切闭合，卫星落在环的接缝上。眼睛感消失，宇宙感保留。</div>';
+
+/* ---------- 02 构造 ---------- */
+document.getElementById("buildMark").innerHTML = markSvg(C.dark, false);
+
+/* ---------- 03 变体 ---------- */
+const variants = [
+  {t:"Mark · 纯图标",       dark:false, html:markSvg(C.dark,false),  css:"width:96px;height:96px"},
+  {t:"Stacked · 竖版",      dark:false, html:stackedSvg(C.dark),     css:"width:150px;height:105px"},
+  {t:"Mono · 单色",         dark:false, html:lockupSvg(C.mono,true),  css:"width:270px;height:72px"},
+  {t:"Reversed · 反白图标", dark:true,  html:markSvg(C.light,false),  css:"width:96px;height:96px"}
+];
+document.getElementById("variants").innerHTML = variants.map(v=>
+  '<div class="v"><div class="s'+(v.dark?' dark':'')+'"><div style="'+v.css+'">'+v.html+'</div></div><div class="lb">'+v.t+'</div></div>'
+).join("");
+
+const sizes = [16,20,24,32,48];
+document.getElementById("sizes").innerHTML = sizes.map(n=>
+  '<div class="sz"><div class="box" style="width:'+n+'px;height:'+n+'px">'+markSvg(C.dark,false)+'</div><span>'+n+' px</span></div>'
+).join("") + '<div style="flex:1;min-width:180px;font-size:11.5px;line-height:1.8;color:#8A9188;align-self:center">16px 下四角、球面与卫星仍可辨识；低于 16px 建议只保留四角与星球轮廓。</div>';
+
+/* ---------- 04 色卡 ---------- */
+const colors = [
+  {n:"Ink 深墨蓝", h:"#0B1F2B", d:"取景四角、星球暗面、主字标；系统的结构色"},
+  {n:"Teal 蓝绿",  h:"#2C7C7B", d:"星球亮面与轨道环、副标；科技感与玻璃质感的来源"},
+  {n:"Amber 暖黄", h:"#E6B879", d:"卫星、星点与截止日期；全系统唯一高饱和点"},
+  {n:"Paper 暖白", h:"#F4F1E8", d:"深底反白版与正文，避免纯白带来的冷硬"}
+];
+document.getElementById("colors").innerHTML = colors.map(c=>
+  '<div class="cc"><div class="sw" style="background:'+c.h+'"></div><div class="tx"><b>'+c.n+'</b><code>'+c.h+'</code><span>'+c.d+'</span></div></div>'
+).join("");
+
+/* ---------- 06 应用 ---------- */
+const lm = () => markSvg(C.light,false);
+document.getElementById("appWidget").innerHTML = lm();
+document.getElementById("appWeb").innerHTML = lm();
+document.getElementById("appIcons").innerHTML =
+  '<div><div class="ic" style="width:76px;height:76px;border-radius:18px">'+lm()+'</div></div>'+
+  '<div><div class="ic" style="width:44px;height:44px;border-radius:11px">'+lm()+'</div></div>'+
+  '<div><div class="ic" style="width:28px;height:28px;border-radius:7px">'+lm()+'</div></div>'+
+  '<div class="ic-cap"><b>76 / 44 / 28 px</b>同一符号等比缩放<br>深色底上卫星保持暖黄</div>';
+document.getElementById("appSign").innerHTML = lockupSvg(C.dark,false);
+
+/* ---------- 07 文件清单（可直接下载） ---------- */
+const files = [
+  {f:"yu-daily-scope-mark.svg",        d:"96 × 96 · 星球版图标 / favicon",  svg:markSvg(C.dark,false)},
+  {f:"yu-daily-scope-logo-dark.svg",   d:"360 × 96 · 主标（浅底）",         svg:lockupSvg(C.dark,false)},
+  {f:"yu-daily-scope-logo-light.svg",  d:"360 × 96 · 反白（深底）",         svg:lockupSvg(C.light,false)},
+  {f:"yu-daily-scope-logo-mono.svg",   d:"360 × 96 · 单色（印刷/水印）",    svg:lockupSvg(C.mono,true)},
+  {f:"yu-daily-scope-logo-stacked.svg",d:"300 × 210 · 竖版（头像/封面）",   svg:stackedSvg(C.dark)}
+];
+document.getElementById("fileList").innerHTML = files.map(x=>
+  '<li><span class="fn">'+x.f+'</span><span class="ds">'+x.d+'</span>'+
+  '<a download="'+x.f+'" href="data:image/svg+xml;charset=utf-8,'+
+    encodeURIComponent(x.svg.replace(' data-brand="1"',''))+'">下载 SVG</a></li>'
+).join("");
 
 })(root); }</script></section>
 <footer>YU’S DAILY SCOPE · 小宇晨报</footer>
