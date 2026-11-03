@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yu's Daily Scope · 双色界面 v3</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ui:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+html,body{background:#0A0B0C}
+body{
+  font-family:var(--ui);color:#E9EAE7;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(900px 500px at 15% -5%, rgba(60,150,140,.10), transparent 65%),
+    radial-gradient(800px 500px at 95% 8%, rgba(120,100,220,.10), transparent 62%),
+    #0A0B0C;
+}
+.page{width:1180px;margin:0 auto;padding:64px 40px 100px}
+
+/* ---------- 文档头 ---------- */
+.doc{border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:30px;margin-bottom:52px}
+.eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#7C8B88;font-weight:600}
+.doc h1{font-size:34px;line-height:1.22;font-weight:600;letter-spacing:-.02em;margin-top:14px}
+.doc h1 em{font-style:normal;background:linear-gradient(96deg,#63D3BF,#A99BFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.doc p{font-size:13.5px;line-height:1.9;color:#9AA3A0;margin-top:14px;max-width:760px}
+.glance{display:flex;gap:18px;margin-top:28px;flex-wrap:wrap}
+.glance-i{display:flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.03)}
+.glance-i b{font-size:12.5px;font-weight:600;display:block;letter-spacing:.01em}
+.glance-i span{font-size:10.5px;color:#8A9390;display:block;margin-top:2px;letter-spacing:.04em}
+
+/* ---------- 主题变量 ---------- */
+.thA{
+  --bgA:#071016; --bgB:#0B222A;
+  --glow1:rgba(58,186,170,.20); --glow2:rgba(34,104,150,.20);
+  --ink:#EDF3EF; --ink2:#9DB6B2; --dim:#5F7A78;
+  --accent:#63D3BF; --amber:#F1C489;
+  --row:rgba(255,255,255,.045); --hair:rgba(255,255,255,.075);
+  --card:rgba(255,255,255,.035);
+  --tile:linear-gradient(148deg,#3CBFAB 0%,#1B8E8C 46%,#0B3B52 100%);
+  --sw1:#071016; --sw2:#0B222A;
+}
+.thB{
+  --bgA:#08070F; --bgB:#181234;
+  --glow1:rgba(140,120,255,.22); --glow2:rgba(255,150,110,.10);
+  --ink:#F2EFFA; --ink2:#B4AAD2; --dim:#7A6F99;
+  --accent:#A99BFF; --amber:#FFC98E;
+  --row:rgba(255,255,255,.05); --hair:rgba(255,255,255,.09);
+  --card:rgba(255,255,255,.038);
+  --tile:linear-gradient(148deg,#9C8BFF 0%,#6B57E0 46%,#2B2166 100%);
+  --sw1:#08070F; --sw2:#181234;
+}
+
+/* ---------- 版本区 ---------- */
+.vers{margin-bottom:86px}
+.vtitle{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.vtitle .n{font-size:11px;letter-spacing:.24em;color:#6E7774;font-weight:600}
+.vtitle h2{font-size:21px;font-weight:600;letter-spacing:-.01em}
+.vtitle .k{font-size:11.5px;color:#6E7774;letter-spacing:.06em}
+.stage{display:flex;gap:64px;align-items:flex-start}
+
+.wcol{display:flex;flex-direction:column;gap:22px;width:338px;flex:0 0 auto}
+.wcap{display:flex;justify-content:space-between;font-size:10.5px;color:#767E7B;letter-spacing:.05em;margin-top:-8px}
+.wcap b{color:#9AA3A0;font-weight:600}
+
+/* ---------- 小组件基础 ---------- */
+.w{
+  position:relative;overflow:hidden;border-radius:24px;padding:13px;
+  display:flex;flex-direction:column;
+  color:var(--ink);
+  background:
+    radial-gradient(115% 82% at 8% -12%, var(--glow1) 0%, transparent 62%),
+    radial-gradient(120% 78% at 104% 112%, var(--glow2) 0%, transparent 60%),
+    linear-gradient(158deg, var(--bgA), var(--bgB));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 22px 60px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.04) inset;
+}
+.w::after{content:"";position:absolute;inset:0;border-radius:24px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),transparent 34%)}
+.w-large{width:338px;height:354px}
+.w-med{width:338px;height:158px;padding:12px 13px}
+
+/* 图标整块 */
+.tile{display:grid;place-items:center;background:var(--tile);flex:0 0 auto;
+  box-shadow:0 3px 10px rgba(0,0,0,.42), 0 1px 0 rgba(255,255,255,.28) inset;
+  border:1px solid rgba(255,255,255,.14)}
+.tile svg{display:block}
+
+/* 顶部行 */
+.w-head{display:flex;align-items:center;gap:7px;height:20px;flex:0 0 auto;position:relative;z-index:2}
+.hdate{font-size:10.5px;font-weight:600;letter-spacing:.01em;color:var(--ink);white-space:nowrap}
+.hdate em{font-style:normal;color:var(--dim);font-weight:500;margin-left:4px;letter-spacing:.04em}
+.sync{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:8.6px;color:var(--ink2);letter-spacing:.04em;white-space:nowrap}
+.sync i{width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2.5px rgba(99,211,191,.14)}
+.rf{width:13px;height:13px;color:var(--ink2);opacity:.75;flex:0 0 auto}
+.rf svg{width:13px;height:13px;display:block}
+.cont{font-size:7.8px;letter-spacing:.1em;color:var(--amber);border:1px solid rgba(241,196,137,.3);
+  border-radius:4px;padding:.5px 3px;line-height:1.2}
+
+/* 问候 */
+.greet{display:flex;gap:9px;align-items:flex-start;margin-top:11px;position:relative;z-index:2}
+.bot{flex:0 0 auto;color:var(--accent);margin-top:1px}
+.bot .eyes{transform-origin:22px 19px;animation:blink 6.4s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.12)}}
+.greet h2{font-size:17.5px;line-height:20px;font-weight:600;letter-spacing:-.012em;color:#fff}
+.greet p{font-size:9.6px;line-height:13px;color:var(--ink2);margin-top:3px;letter-spacing:.005em}
+
+/* 列表 */
+.list{list-style:none;display:flex;flex-direction:column;gap:4px;flex:1;min-height:0;margin-top:9px;position:relative;z-index:2}
+.row{display:grid;grid-template-columns:14px 1fr 60px;column-gap:7px;align-items:center;
+  background:var(--row);border:1px solid var(--hair);border-radius:9px;padding:0 9px;
+  flex:1;min-height:0;overflow:hidden}
+.no{font-size:10.2px;font-weight:600;color:var(--dim);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.mid{min-width:0;display:block}
+.ti{display:block;font-size:12.2px;line-height:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sm{display:block;font-size:9.4px;line-height:12px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.dt{font-size:9.3px;line-height:11px;color:var(--amber);text-align:right;font-weight:500;letter-spacing:-.01em;white-space:nowrap}
+.d6 .ti{font-size:11.8px;line-height:14px}
+.d6 .sm{font-size:9.1px;line-height:11px;margin-top:1.5px}
+
+/* 页脚 */
+.w-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:9px;flex:0 0 auto;position:relative;z-index:2}
+.w-foot .q{font-size:8.4px;color:var(--dim);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-foot .more{font-size:8.8px;color:var(--amber);white-space:nowrap;letter-spacing:.02em}
+
+/* 中号 */
+.w-med .list{margin-top:8px;gap:5px}
+.w-med .row{grid-template-columns:14px 1fr 62px}
+.w-med .ti{font-size:12.4px;line-height:15px}
+.w-med .w-foot .q{color:var(--ink2)}
+
+/* 空态 */
+.two{justify-content:center;gap:8px}
+.two .row{flex:0 0 auto;height:52px}
+.empty-foot{display:flex;align-items:center;gap:11px;margin-top:auto;padding:4px 2px 2px;position:relative;z-index:2}
+.empty-foot .qq{font-size:9.4px;line-height:14px;color:var(--ink2)}
+.empty-foot .qq b{display:block;color:var(--ink);font-weight:600;font-size:10px;margin-bottom:2px;letter-spacing:.01em}
+
+/* ---------- 手机 ---------- */
+.phone{width:390px;height:844px;border-radius:52px;flex:0 0 auto;position:relative;
+  background:#000;box-shadow:0 30px 80px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.10)}
+.screen{position:absolute;inset:0;border-radius:52px;overflow:hidden;color:var(--ink);
+  background:
+    radial-gradient(120% 60% at 20% -8%, var(--glow1), transparent 62%),
+    radial-gradient(120% 55% at 110% 106%, var(--glow2), transparent 58%),
+    linear-gradient(168deg,var(--bgA),var(--bgB))}
+.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:116px;height:29px;border-radius:16px;background:#000;z-index:30}
+.sbar{position:absolute;top:0;left:0;right:0;height:50px;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 30px 0;font-size:12px;font-weight:600;color:#fff;z-index:25;pointer-events:none}
+.sbar .r{display:flex;gap:5px;align-items:center;font-size:10.5px;opacity:.9}
+.web{position:absolute;inset:0;overflow-y:auto;padding:50px 0 44px;scrollbar-width:none}
+.web::-webkit-scrollbar{display:none}
+
+.wtop{display:flex;align-items:center;gap:8px;padding:12px 22px 0}
+.wtop .nm{font-size:9.4px;letter-spacing:.2em;font-weight:600;color:var(--ink2)}
+.wtop .st{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:9px;color:var(--dim);letter-spacing:.04em}
+.wtop .st i{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+.hero{padding:22px 22px 0}
+.brandblk{display:flex;align-items:center;gap:13px;padding-bottom:20px;border-bottom:1px solid var(--hair)}
+.brandblk b{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.005em}
+.brandblk span{display:block;font-size:8.6px;letter-spacing:.2em;color:var(--ink2);margin-top:4px;font-weight:500}
+.hdate2{font-size:10.5px;letter-spacing:.07em;color:var(--dim);margin-top:20px}
+.hero h1{font-size:29px;line-height:1.24;font-weight:600;letter-spacing:-.026em;margin-top:9px;color:#fff}
+.voice{display:flex;gap:8px;align-items:center;margin-top:13px}
+.voice span{font-size:12.5px;color:var(--accent);letter-spacing:.01em}
+.bless{font-size:13px;line-height:1.85;color:var(--ink2);margin-top:7px;letter-spacing:.005em}
+.chips{display:flex;gap:8px;margin-top:15px;flex-wrap:wrap}
+.chip{font-size:10px;letter-spacing:.03em;color:var(--ink2);border:1px solid var(--hair);
+  background:var(--card);border-radius:7px;padding:4px 9px}
+.chip.hot{color:var(--amber);border-color:rgba(241,196,137,.26);background:transparent}
+
+.sect{display:flex;align-items:center;gap:10px;margin:30px 22px 12px;font-size:10px;letter-spacing:.14em;color:var(--dim)}
+.sect i{flex:1;height:1px;background:var(--hair)}
+
+.wlist{list-style:none;padding:0 22px;display:flex;flex-direction:column;gap:9px}
+.wi{position:relative;padding:13px 14px 14px;border-radius:14px;background:var(--card);border:1px solid var(--hair)}
+.wi .rowtop{display:flex;gap:9px;align-items:baseline}
+.wi .wno{font-size:10px;font-weight:600;color:var(--dim);letter-spacing:.06em;flex:0 0 auto;padding-top:2px}
+.wi .wt{font-size:15px;line-height:1.42;font-weight:600;letter-spacing:-.01em;flex:1}
+.wi .wmeta{display:flex;align-items:center;gap:8px;margin-top:9px;padding-left:23px}
+.wi .wdate{font-size:11.5px;font-weight:600;color:var(--amber);letter-spacing:.01em}
+.wi .wday{font-size:9.5px;color:var(--dim);border:1px solid var(--hair);border-radius:5px;padding:1px 5px}
+.wi .ws{font-size:11.8px;line-height:1.78;color:var(--ink2);margin-top:8px;padding-left:23px}
+.wi .wsrc{font-size:10px;color:var(--accent);margin-top:8px;padding-left:23px;opacity:.85}
+
+.quote{margin:26px 22px 0;padding:16px 16px 15px;border-radius:14px;border:1px solid var(--hair);background:var(--card);
+  display:flex;gap:11px;align-items:center}
+.quote .qt{font-size:10px;letter-spacing:.16em;color:var(--dim);display:block;margin-bottom:5px}
+.quote .qq{font-size:12.2px;line-height:1.7;color:var(--ink)}
+.wfoot{margin:22px 22px 0;padding-top:16px;border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between}
+.wfoot .l{font-size:9.4px;line-height:1.7;color:var(--dim)}
+.wfoot .r{font-size:9.4px;color:var(--amber)}
+
+/* ---------- 图注 / 说明 ---------- */
+.cap{font-size:10.5px;color:#767E7B;letter-spacing:.05em;margin-top:12px;line-height:1.7}
+.cap b{color:#9AA3A0;font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px}
+.card h3{font-size:13px;font-weight:600;letter-spacing:.02em;margin-bottom:6px}
+.card p{font-size:11.5px;line-height:1.8;color:#8A9390}
+.bots{display:flex;align-items:flex-end;gap:26px;margin:22px 0 6px;color:#63D3BF}
+.botlab{font-size:9.5px;color:#767E7B;text-align:center;margin-top:8px;letter-spacing:.06em}
+.voicecase{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.voicecase:last-child{border-bottom:0}
+.voicecase .tag{font-size:9px;letter-spacing:.1em;color:#0A0B0C;background:#63D3BF;border-radius:5px;padding:2px 6px;font-weight:700;flex:0 0 auto;margin-top:2px}
+.voicecase .tag.no2{background:transparent;color:#6E7774;border:1px solid rgba(255,255,255,.13);font-weight:600}
+.voicecase .tx{font-size:12.5px;line-height:1.7;color:#C9D0CD}
+.voicecase .tx em{font-style:normal;display:block;font-size:10.5px;color:#6E7774;margin-top:5px;letter-spacing:.02em}
+.sw-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.sw{width:88px}
+.sw i{display:block;height:48px;border-radius:10px;border:1px solid rgba(255,255,255,.10)}
+.sw b{display:block;font-size:10px;color:#B9C0BD;margin-top:7px;font-weight:600;letter-spacing:.03em}
+.sw span{display:block;font-size:9px;color:#6E7774;font-family:ui-monospace,Menlo,monospace;margin-top:2px}
+.tbl{width:100%;border-collapse:collapse;margin-top:10px}
+.tbl td{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:11.5px;line-height:1.7;color:#9AA3A0;vertical-align:top}
+.tbl td.k{width:190px;color:#DDE2DF;font-weight:600;font-size:11.5px}
+.tbl td.s{width:96px}
+.tag-ok{font-size:9px;letter-spacing:.08em;border:1px solid rgba(99,211,191,.35);color:#63D3BF;border-radius:5px;padding:2px 6px;white-space:nowrap}
+.tag-cc{font-size:9px;letter-spacing:.08em;border:1px solid rgba(255,255,255,.14);color:#8A9390;border-radius:5px;padding:2px 6px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc">
+    <div class="eyebrow">Yu's Daily Scope / Interface v3</div>
+    <h1>两套颜色，<em>一个机器人</em></h1>
+    <p>同一套排版系统，两版配色并排对照。图标这次不再缩在角落，而是做成实心色块、标志反白镂空，整块用进页首；问候从「一句祝福」改成瓦力式的口吻——先说自己，再把今天交给你。</p>
+    <div class="glance" id="glance"></div>
+  </header>
+
+  <section class="vers">
+    <div class="vtitle"><span class="n">VERSION A</span><h2>Deep Field · 深空蓝绿</h2><span class="k">更低更暗的底 + 蓝绿主光，最接近现有基因</span></div>
+    <div class="stage thA" data-th="a"></div>
+  </section>
+
+  <section class="vers">
+    <div class="vtitle"><span class="n">VERSION B</span><h2>Nebula Violet · 星云靛紫</h2><span class="k">紫调更冷、更「AI」，和摄影内容形成冷暖对照</span></div>
+    <div class="stage thB" data-th="b"></div>
+  </section>
+
+  <section class="vers">
+    <div class="vtitle"><span class="n">STATE</span><h2>只有 2 条时的空态</h2><span class="k">内容少，把空间让给机器人</span></div>
+    <div class="stage" style="gap:22px" id="emptyStage"></div>
+    <div class="cap" style="margin-top:16px"><b>空态逻辑</b>：条目垂直居中，底部留出机器人位。机器人是「陪着你」而不是「占位符」——它比大组件里的版本大一号（46px），眼睛仍朝向左侧正文。</div>
+  </section>
+
+  <section class="vers">
+    <div class="vtitle"><span class="n">DETAIL</span><h2>问候与机器人</h2><span class="k">可爱来自小、专注和诚实，不来自卖萌</span></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>01 · 机器人 YU-1</h3>
+        <p>两个等大的镜头眼，左眼亮、右眼暗——像瓦力那对望远镜眼，永远只看一件东西。天线上一粒暖黄是「醒着」的信号，6 秒眨一次眼。</p>
+        <div class="bots" id="botRow"></div>
+        <p style="margin-top:14px;color:#6E7774;font-size:10.5px">16px 用于条目行内，22px 用于小组件问候，32px 用于网页，46px 用于空态。</p>
+      </div>
+      <div class="card">
+        <h3>02 · 三种口吻</h3>
+        <div id="voices"></div>
+      </div>
+    </div>
+    <div class="cap" style="margin-top:18px"><b>为什么用 A</b>：B 是工具在汇报，C 是人在祝福，只有 A 是「一个每天早上替你跑一趟的小家伙」回来了。它先说自己的动作（天没亮就醒了），再交结论（9 件），最后不催你（慢慢来）。瓦力的可爱就是这三件事。</div>
+  </section>
+
+  <section class="vers" style="margin-bottom:0">
+    <div class="vtitle"><span class="n">SYSTEM</span><h2>色值与可实现性</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>A · Deep Field</h3>
+        <div class="sw-row" id="swA"></div>
+      </div>
+      <div class="card">
+        <h3>B · Nebula Violet</h3>
+        <div class="sw-row" id="swB"></div>
+      </div>
+    </div>
+    <table class="tbl">
+      <tr><td class="k">图标整块（渐变底 + 反白标志）</td><td class="s"><span class="tag-ok">可实现</span></td><td>Scriptable 的 DrawContext 可直接画圆角矩形与矢量路径；稳妥做法是把色块版导出为 3 档 PNG（22/58/76px）随脚本打包。</td></tr>
+      <tr><td class="k">问候语与机器人</td><td class="s"><span class="tag-ok">可实现</span></td><td>文案是纯文本，按系统时间切早上好 / 下午好 / 晚上好；机器人用同色 PNG。<b>眨眼动画只在网页成立</b>，Scriptable 里用两帧静态图或干脆不眨。</td></tr>
+      <tr><td class="k">双主题切换</td><td class="s"><span class="tag-ok">可实现</span></td><td>脚本顶部一组颜色常量，换 6 个值即可整体换肤；两版共用同一套布局函数，零改动。</td></tr>
+      <tr><td class="k">玻璃模糊与背景光晕</td><td class="s"><span class="tag-cc">概念图</span></td><td>小组件拿不到桌面壁纸做实时模糊。实现时用「半透明叠加 + 大半径径向渐变」模拟，层次能到八成，别指望真高斯模糊。</td></tr>
+      <tr><td class="k">数据链路</td><td class="s"><span class="tag-ok">不变</span></td><td>仍是 <span style="font-family:ui-monospace,Menlo,monospace;font-size:10.5px">GET /api/briefing/today</span> + 07:30 定时发布，前端只换皮。</td></tr>
+    </table>
+  </section>
+
+</div>
+
+<script>
+/* ================= 数据 ================= */
+const BRIEF = {date:"11月3日 周二", issue:"第 128 期", sync:"09:12", total:9};
+const ITEMS = [
+  {t:"索尼世界摄影奖 2027 开放组征集", s:"五张单张即可投稿，学生组免报名费", d:"截止 11/10", src:"sony-worldphotography.org"},
+  {t:"「光的褶皱」杉本博司个展", s:"上海摄影艺术中心，本周新增夜场", d:"展至 11/15", src:"scopepaimages.org"},
+  {t:"三影堂摄影奖 初选投稿", s:"10–20 张组照，需附创作自述", d:"截止 11/18", src:"threeshadows.cn"},
+  {t:"城市切片 · 街头摄影工作坊", s:"三天外拍加一次评片，招募 12 人", d:"11/12–11/15", src:"urban-slice.com"},
+  {t:"柏林摄影节 Portfolio Review", s:"线上开放，编辑一对一见组", d:"截止 11/20", src:"fotoberlin.de"},
+  {t:"富士 X-SPACE 暗房基础课", s:"黑白冲洗与放大，含药液材料", d:"11/14", src:"fujifilm-x.cn"},
+  {t:"国家地理「自然之力」全球征稿", s:"单幅与组照两个单元", d:"截止 11/25", src:"natgeo.com"},
+  {t:"上海双年展 媒体预展登记", s:"需提交媒体或创作者证明", d:"11/19", src:"shanghaibiennale.org"},
+  {t:"Shot on iPhone 2027 挑战", s:"主题「一天的开始」，手机直出", d:"截止 11/30", src:"apple.com"}
+];
+
+/* ================= 图标 ================= */
+let UID = 0;
+function mark(size, p){
+  const id = "mk" + (++UID);
+  return `<svg viewBox="0 0 96 96" width="${size}" height="${size}" fill="none" aria-hidden="true">
+  <defs>
+    <clipPath id="${id}p"><circle cx="48" cy="48" r="16"/></clipPath>
+    <clipPath id="${id}f"><rect x="-4" y="49.5" width="104" height="50"/></clipPath>
+  </defs>
+  <g stroke="${p.frame}" stroke-width="3.6" stroke-linecap="square">
+    <path d="M12 32V12h20"/><path d="M84 32V12H64"/>
+    <path d="M12 64v20h20"/><path d="M84 64v20H64"/>
+  </g>
+  <g transform="rotate(-14 48 49.5)">
+    <ellipse cx="48" cy="49.5" rx="31" ry="10.5" stroke="${p.ring}" stroke-opacity=".30" stroke-width="3"/>
+  </g>
+  <g clip-path="url(#${id}p)">
+    <circle cx="48" cy="48" r="16" fill="${p.bright}"/>
+    <circle cx="67.5" cy="48" r="16" fill="${p.shadow}"/>
+    <circle cx="41.5" cy="42.5" r="3" fill="${p.bright}" opacity=".55"/>
+  </g>
+  <g transform="rotate(-14 48 49.5)" clip-path="url(#${id}f)">
+    <ellipse cx="48" cy="49.5" rx="31" ry="10.5" stroke="${p.ring}" stroke-opacity=".92" stroke-width="3"/>
+  </g>
+  <circle cx="79" cy="41.6" r="3.3" fill="${p.sat}"/>
+  <path d="M70.5 22.5v6M67.5 25.5h6" stroke="${p.star}" stroke-opacity=".5" stroke-width="1.3" stroke-linecap="round"/>
+  </svg>`;
+}
+const TILE_P = {frame:"#FCFAF3", ring:"#FFFFFF", bright:"#FFFFFF", shadow:"rgba(6,18,26,.66)", sat:"#FFE2B8", star:"#FFE2B8"};
+const DARK_P = {frame:"#0B1F2B", ring:"#2C7C7B", bright:"#2C7C7B", shadow:"#0B1F2B", sat:"#E6B879", star:"#E6B879"};
+
+function tile(size){
+  return `<div class="tile" style="width:${size}px;height:${size}px;border-radius:${Math.round(size*0.28)}px">${mark(Math.round(size*0.76), TILE_P)}</div>`;
+}
+
+/* 机器人 */
+function robot(size){
+  const h = Math.round(size*0.9);
+  return `<svg class="bot" viewBox="0 0 44 40" width="${size}" height="${h}" fill="none" aria-hidden="true">
+    <path d="M22 7V3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+    <circle cx="22" cy="2.2" r="1.9" fill="var(--amber)"/>
+    <rect x="3.4" y="7.2" width="37.2" height="23.6" rx="10" stroke="currentColor" stroke-width="1.9" opacity=".5"/>
+    <g class="eyes">
+      <circle cx="16" cy="19" r="5.7" fill="currentColor" opacity=".92"/>
+      <circle cx="28.2" cy="19" r="5.7" fill="currentColor" opacity=".38"/>
+      <circle cx="14.4" cy="17" r="1.5" fill="#fff" opacity=".9"/>
+    </g>
+    <path d="M13 35h18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" opacity=".26"/>
+  </svg>`;
+}
+
+const RF = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1"/><path d="M20.5 4.6V9H16"/></svg>`;
+
+/* ================= 小组件 ================= */
+function wHeadCompact(){
+  return `<div class="w-head">
+    ${tile(18)}
+    <span class="hdate">${BRIEF.date}</span>
+    <span class="sync"><i></i>已同步</span>
+    <span class="rf">${RF}</span>
+  </div>`;
+}
+function rowFull(it, i){
+  return `<li class="row">
+    <span class="no">${String(i+1).padStart(2,"0")}</span>
+    <span class="mid"><span class="ti">${it.t}</span><span class="sm">${it.s}</span></span>
+    <span class="dt">${it.d}</span>
+  </li>`;
+}
+function rowLite(it, i){
+  return `<li class="row">
+    <span class="no">${String(i+1).padStart(2,"0")}</span>
+    <span class="mid"><span class="ti">${it.t}</span></span>
+    <span class="dt">${it.d}</span>
+  </li>`;
+}
+function wLarge(list){
+  return `<div class="w w-large">
+    ${wHeadCompact()}
+    <div class="greet">${robot(23)}
+      <div>
+        <h2>小宇，早上好。</h2>
+        <p>我把今天捡回来了，一共 ${list.length} 件。</p>
+      </div>
+    </div>
+    <ul class="list d6">${list.map(rowFull).join("")}</ul>
+    <div class="w-foot"><span class="q">把好奇变成动作，把日常看成风景。</span><span class="more">全部 ${BRIEF.total} 条 ›</span></div>
+  </div>`;
+}
+function wMed(list){
+  return `<div class="w w-med">
+    <div class="w-head" style="height:16px">
+      ${tile(15)}
+      <span class="cont">续</span>
+      <span class="hdate" style="margin-left:2px">${BRIEF.date}</span>
+      <span class="sync"><i></i>${BRIEF.sync}</span>
+    </div>
+    <ul class="list">${list.map(rowLite).join("")}</ul>
+    <div class="w-foot" style="margin-top:7px">
+      <span class="q">我盯着截止日，放心。</span>
+      <span class="more">全部 ${BRIEF.total} 条 ›</span>
+    </div>
+  </div>`;
+}
+function wEmpty(list){
+  return `<div class="w w-large">
+    ${wHeadCompact()}
+    <div class="greet">${robot(23)}
+      <div>
+        <h2>小宇，早上好。</h2>
+        <p>今天很安静，只捡到 2 件。</p>
+      </div>
+    </div>
+    <ul class="list two">${list.map(rowFull).join("")}</ul>
+    <div class="empty-foot">${robot(46)}
+      <div class="qq"><b>都不着急，我陪你慢慢看。</b>把好奇变成动作，把日常看成风景。</div>
+    </div>
+  </div>`;
+}
+
+/* ================= 网页 ================= */
+function webItem(it, i){
+  const day = it.d.includes("截止") ? "剩 "+ ((i*3)+5) +" 天" : "";
+  return `<li class="wi">
+    <div class="rowtop"><span class="wno">${String(i+1).padStart(2,"0")}</span><span class="wt">${it.t}</span></div>
+    <div class="wmeta"><span class="wdate">${it.d}</span>${day?`<span class="wday">${day}</span>`:""}</div>
+    <div class="ws">${it.s}。${i===0?"投稿须为 2026 年内拍摄，允许后期但不可合成；入选作品将在伦敦萨默塞特宫展出。":"点开可看完整说明与报名入口。"}</div>
+    <div class="wsrc">${it.src} ↗</div>
+  </li>`;
+}
+function phone(){
+  return `<div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="sbar"><span>9:41</span><span class="r">5G&nbsp;&nbsp;▮▮▮</span></div>
+    <div class="web">
+      <div class="wtop">${tile(22)}<span class="nm">YU'S DAILY SCOPE</span><span class="st"><i></i>已同步 ${BRIEF.sync}</span></div>
+      <div class="hero">
+        <div class="brandblk">${tile(58)}
+          <div><b>Yu's Daily Scope</b><span>MORNING BRIEF · 07:30</span></div>
+        </div>
+        <div class="hdate2">2026 年 11 月 3 日 · 周二 · ${BRIEF.issue}</div>
+        <h1>小宇，<br>早上好。</h1>
+        <div class="voice">${robot(17)}<span>我天没亮就醒了，替你翻了一遍。</span></div>
+        <p class="bless">今天有 9 件值得看，2 件快到截止。我把急的放在前面了，你慢慢来。</p>
+        <div class="chips"><span class="chip">今日 9 条</span><span class="chip hot">2 条临近截止</span><span class="chip">3 场展期</span></div>
+      </div>
+      <div class="sect"><span>今日机会</span><i></i><span>${BRIEF.total} 条</span></div>
+      <ul class="wlist">${ITEMS.map(webItem).join("")}</ul>
+      <div class="quote">${robot(26)}<div><span class="qt">DAILY NOTE</span><div class="qq">把好奇变成动作，<br>把日常看成风景。</div></div></div>
+      <div class="wfoot"><span class="l">Yu's Daily Scope · 每日 07:30 更新<br>整理：小宇 · 链接均指向原始来源</span><span class="r">刷新 ↗</span></div>
+    </div>
+  </div></div>`;
+}
+
+/* ================= 装配 ================= */
+document.querySelectorAll(".stage[data-th]").forEach(st=>{
+  st.innerHTML = `<div class="wcol">
+      ${wLarge(ITEMS.slice(0,6))}
+      <div class="wcap"><span>大号 · 338 × 354 · 第 1–6 条</span><b>6 条满排</b></div>
+      ${wMed(ITEMS.slice(6,9))}
+      <div class="wcap"><span>中号 · 338 × 158 · 第 7–9 条</span><b>续页</b></div>
+    </div>
+    ${phone()}
+    <div style="padding-top:4px;width:210px">
+      <div style="font-size:10.5px;line-height:1.9;color:#767E7B">
+        <b style="color:#B9C0BD;display:block;margin-bottom:8px;font-size:11px">这一版改了什么</b>
+        ① 图标从 16px 小图标变成 <b style="color:#DDE2DF">实心色块 + 反白标志</b>，顶栏与网页页首同源<br><br>
+        ② 问候区加入机器人 YU-1，文案换成第一人称<br><br>
+        ③ 网页页首新增品牌块，图标 58px 整块占位<br><br>
+        ④ 日期列与编号列的对齐线不变
+      </div>
+    </div>`;
+});
+
+/* 空态（两版并排） */
+document.getElementById("emptyStage").innerHTML = `
+  <div class="thA" style="display:flex;flex-direction:column;gap:10px">${wEmpty(ITEMS.slice(0,2))}
+    <div class="wcap" style="margin-top:0"><span>A · 深空蓝绿</span><b>2 条</b></div></div>
+  <div class="thB" style="display:flex;flex-direction:column;gap:10px">${wEmpty(ITEMS.slice(0,2))}
+    <div class="wcap" style="margin-top:0"><span>B · 星云靛紫</span><b>2 条</b></div></div>
+  <div style="width:300px;padding-left:6px">
+    <div style="font-size:10.5px;line-height:1.95;color:#767E7B">
+      <b style="color:#B9C0BD;display:block;margin-bottom:8px;font-size:11px">留白怎么用</b>
+      2 条时列表不再拉伸，改成 52pt 固定高、整体居中；省下的 100pt 全部给机器人——它是这张图里唯一「会动」的东西。格言仍是全局唯一一次出现。
+    </div>
+  </div>`;
+
+/* 文档头色块 */
+document.getElementById("glance").innerHTML = `
+  <div class="glance-i thA">${tile(38)}<div><b>Deep Field</b><span>深空蓝绿 · #63D3BF</span></div></div>
+  <div class="glance-i thB">${tile(38)}<div><b>Nebula Violet</b><span>星云靛紫 · #A99BFF</span></div></div>`;
+
+/* 机器人尺寸 */
+const botRow = [[16,"16"],[22,"22"],[32,"32"],[46,"46"]].map(([s,l])=>
+  `<div><div style="color:#63D3BF">${robot(s)}</div><div class="botlab">${l}px</div></div>`).join("");
+document.getElementById("botRow").innerHTML = botRow;
+
+/* 口吻 */
+document.getElementById("voices").innerHTML = `
+  <div class="voicecase"><span class="tag">采用</span><div class="tx">我天没亮就醒了，替你翻了一遍今天。<em>A · 先说自己，再交结论，不催你。这是瓦力。</em></div></div>
+  <div class="voicecase"><span class="tag no2">备选</span><div class="tx">早上好。今天有 9 件，我按截止日排好了。<em>B · 准确，但像工具在汇报。</em></div></div>
+  <div class="voicecase"><span class="tag no2">备选</span><div class="tx">小宇，早上好 ☀️ 今天也一起去看看世界吧。<em>C · 温暖，但像人在祝福，没有「谁替你跑了一趟」。</em></div></div>`;
+
+/* 色卡 */
+const swA = [["#071016","底 深"],["#0B222A","底 浅"],["#63D3BF","主光"],["#F1C489","日期"],["#EDF3EF","正文"]];
+const swB = [["#08070F","底 深"],["#181234","底 浅"],["#A99BFF","主光"],["#FFC98E","日期"],["#F2EFFA","正文"]];
+document.getElementById("swA").innerHTML = swA.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
+document.getElementById("swB").innerHTML = swB.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
+</script>
+</body>
+</html>
