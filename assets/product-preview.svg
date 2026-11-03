@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" role="img">
+<title>小宇晨报网页与 iPhone 主屏幕示意</title>
+<rect width="960" height="510" rx="28" fill="#101d23"/>
+<g font-family="Microsoft YaHei,PingFang SC,sans-serif" fill="#ecf8f3">
+<text x="45" y="52" font-size="20" fill="#8bd8bb">DAILY SCOPE  /  网页完整阅读</text>
+<rect x="45" y="78" width="512" height="383" rx="20" fill="#19343a" stroke="#345b5e"/>
+<text x="72" y="119" font-size="15" fill="#a6c8c4">每日机会简报 · 小宇的关注范围</text>
+<text x="72" y="166" font-size="32" font-weight="bold">小宇，早上好。</text>
+<text x="72" y="198" font-size="16" fill="#a6c8c4">摄影征集、附近展览和机器人活动</text>
+<rect x="70" y="224" width="462" height="93" rx="12" fill="#25464a"/>
+<text x="87" y="255" font-size="18">01  菊韵金秋摄影征集</text>
+<text x="510" y="255" text-anchor="end" font-size="15" fill="#f5d18b">截止 11/29</text>
+<text x="87" y="289" font-size="15" fill="#bfdbd6">参赛要求、拍摄地点与投稿方式  ↗</text>
+<rect x="70" y="329" width="462" height="93" rx="12" fill="#25464a"/>
+<text x="87" y="360" font-size="18">02  AI＋未来工程师挑战计划</text>
+<text x="510" y="360" text-anchor="end" font-size="15" fill="#f5d18b">截止 11/10</text>
+<text x="87" y="393" font-size="15" fill="#bfdbd6">报名资格、组队要求与活动原文  ↗</text>
+<text x="622" y="52" font-size="20" fill="#8bd8bb">iPHONE  /  主屏幕扫读</text>
+<rect x="627" y="72" width="288" height="394" rx="35" fill="#0c161d" stroke="#4b6669" stroke-width="2"/>
+<text x="651" y="114" font-size="17">07:30</text>
+<rect x="646" y="135" width="250" height="242" rx="23" fill="#1e3a40" stroke="#355a5e"/>
+<text x="663" y="165" font-size="13" fill="#a6c8c4">小宇晨报 · 每日机会</text>
+<text x="663" y="196" font-size="22" font-weight="bold">早上好，小宇</text>
+<rect x="660" y="214" width="222" height="42" rx="8" fill="#2b4c51"/>
+<text x="671" y="240" font-size="13">未来工程师挑战</text>
+<text x="869" y="240" text-anchor="end" font-size="12" fill="#f5d18b">11/10</text>
+<rect x="660" y="264" width="222" height="42" rx="8" fill="#2b4c51"/>
+<text x="671" y="290" font-size="13">菊韵金秋摄影征集</text>
+<text x="869" y="290" text-anchor="end" font-size="12" fill="#f5d18b">11/29</text>
+<text x="663" y="346" font-size="14" fill="#8bd8bb">查看完整简报  ↗</text>
+<text x="771" y="402" text-anchor="middle" font-size="13" fill="#a6c8c4">Scriptable</text>
+</g>
+</svg>
