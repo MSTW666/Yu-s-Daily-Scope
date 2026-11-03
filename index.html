@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="a">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yu's Daily Scope · 每日机会简报</title>
+<meta name="description" content="每天早上一份个人机会简报：摄影征集、展览、比赛与科技活动。">
+<meta name="theme-color" content="#071016">
+<link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg-deep:#071016; --bg:#0B222A;
+  --ink:#EDF3EF; --ink2:#9DB6B2; --dim:#5F7A78;
+  --accent:#63D3BF; --amber:#F1C489;
+  --card:rgba(255,255,255,.045); --card-2:rgba(255,255,255,.07);
+  --hair:rgba(255,255,255,.075); --hair-2:rgba(255,255,255,.12);
+  --mark:#FCFAF3;
+}
+html[data-theme="b"]{
+  --bg-deep:#08070F; --bg:#171233;
+  --ink:#F2EFFA; --ink2:#B4AAD2; --dim:#7A6F99;
+  --accent:#A99BFF; --amber:#FFC98E;
+  --card:rgba(255,255,255,.05); --card-2:rgba(255,255,255,.08);
+  --hair:rgba(255,255,255,.09); --hair-2:rgba(255,255,255,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:
+    radial-gradient(900px 520px at 78% -8%, rgba(99,211,191,.13), transparent 62%),
+    radial-gradient(700px 420px at 10% 6%, rgba(99,211,191,.06), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 46%, var(--bg-deep) 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Segoe UI",Roboto,sans-serif;
+  font-size:15px;line-height:1.6;
+  padding:0 max(20px, env(safe-area-inset-left)) calc(28px + env(safe-area-inset-bottom));
+  min-height:100vh;
+}
+.wrap{max-width:560px;margin:0 auto}
+
+/* ---------- 顶栏 ---------- */
+.topbar{display:flex;align-items:center;gap:10px;padding:14px 0 0;min-height:44px}
+.tile{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  background:linear-gradient(148deg,#2C7C7B 0%,#1D5C60 46%,#123C45 100%);
+  box-shadow:0 4px 12px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.16)}
+.tile img{width:78%;height:78%;display:block}
+.tile.s22{width:22px;height:22px;border-radius:6px}
+.tile.s58{width:58px;height:58px;border-radius:15px}
+.nm{font-size:10.5px;letter-spacing:.22em;color:var(--ink2);font-weight:600}
+.st{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(99,211,191,.14)}
+.dot.warn{background:var(--amber);box-shadow:0 0 0 3px rgba(241,196,137,.14)}
+.dot.bad{background:var(--dim);box-shadow:0 0 0 3px rgba(95,122,120,.14)}
+.rf{appearance:none;border:1px solid var(--hair-2);background:transparent;color:var(--ink2);
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;cursor:pointer;
+  transition:.2s transform,.2s color,.2s border-color}
+.rf:active{transform:scale(.94)}
+.rf svg{width:14px;height:14px}
+.rf.spin svg{animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ---------- 品牌块 ---------- */
+.brandblk{display:flex;align-items:center;gap:14px;margin-top:26px}
+.brandblk .tx b{display:block;font-size:19px;font-weight:650;letter-spacing:.01em}
+.brandblk .tx span{display:block;font-size:9.5px;letter-spacing:.24em;color:var(--dim);margin-top:4px}
+
+/* ---------- 问候 ---------- */
+.hero{margin-top:30px}
+.hdate{font-size:11.5px;letter-spacing:.04em;color:var(--ink2);display:flex;align-items:center;gap:8px}
+.hdate i{width:16px;height:1px;background:var(--hair-2);display:block}
+h1{font-size:33px;line-height:1.22;font-weight:680;letter-spacing:-.015em;margin-top:14px}
+h1 .soft{color:var(--ink2);font-weight:600}
+.voice{display:flex;align-items:center;gap:9px;margin-top:14px;color:var(--accent);font-size:13px;letter-spacing:.01em}
+.voice svg{flex:0 0 auto}
+.bless{margin-top:14px;font-size:13.5px;line-height:1.85;color:var(--ink2);max-width:31em}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:11.5px;color:var(--ink2);border:1px solid var(--hair-2);border-radius:999px;padding:4px 11px}
+.chip.hot{color:var(--amber);border-color:rgba(241,196,137,.32);background:rgba(241,196,137,.06)}
+
+/* ---------- 分隔 ---------- */
+.sect{display:flex;align-items:center;gap:12px;margin:32px 0 14px;font-size:11px;letter-spacing:.14em;color:var(--dim)}
+.sect i{flex:1;height:1px;background:var(--hair)}
+
+/* ---------- 条目 ---------- */
+.wlist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.wi{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:15px 16px 14px;
+  transition:.18s border-color,.18s background}
+.wi:active{background:var(--card-2)}
+.wi.hot{border-color:rgba(241,196,137,.26)}
+.rowtop{display:flex;gap:10px;align-items:baseline}
+.wno{font-size:10px;letter-spacing:.06em;color:var(--dim);font-variant-numeric:tabular-nums;flex:0 0 auto;padding-top:2px}
+.wt{font-size:15.5px;line-height:1.45;font-weight:600;letter-spacing:.005em;word-break:break-word}
+.wmeta{display:flex;align-items:center;gap:8px;margin-top:7px;padding-left:22px}
+.wdate{font-size:12.5px;color:var(--amber);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.wday{font-size:10.5px;color:rgba(241,196,137,.72);border:1px solid rgba(241,196,137,.24);
+  border-radius:5px;padding:1px 5px;line-height:1.5}
+.ws{margin-top:9px;padding-left:22px;font-size:12.8px;line-height:1.78;color:var(--ink2)}
+.wsrc{display:inline-flex;align-items:center;gap:4px;margin-top:9px;margin-left:22px;
+  font-size:11px;color:var(--dim);text-decoration:none;border-bottom:1px solid transparent;transition:.18s color}
+.wsrc:hover,.wsrc:active{color:var(--accent);border-color:rgba(99,211,191,.3)}
+
+/* ---------- 每日一句 ---------- */
+.quote{margin-top:26px;display:flex;gap:13px;align-items:center;border:1px solid var(--hair);
+  border-radius:16px;padding:16px;background:linear-gradient(120deg, rgba(99,211,191,.05), transparent 62%)}
+.quote .lb{font-size:9.5px;letter-spacing:.24em;color:var(--dim)}
+.quote .qq{font-size:13.5px;line-height:1.8;margin-top:6px;color:var(--ink)}
+
+/* ---------- 页脚 ---------- */
+.wfoot{margin-top:26px;padding-top:16px;border-top:1px solid var(--hair);
+  display:flex;align-items:flex-end;gap:12px;font-size:11px;color:var(--dim);line-height:1.9}
+.wfoot b{color:var(--ink2);font-weight:600}
+.wfoot a{margin-left:auto;color:var(--ink2);text-decoration:none;font-size:11.5px;border-bottom:1px solid var(--hair-2);padding-bottom:1px}
+
+/* ---------- 状态 ---------- */
+.banner{display:none;margin-top:18px;border:1px solid rgba(241,196,137,.26);background:rgba(241,196,137,.06);
+  color:var(--amber);border-radius:12px;padding:11px 14px;font-size:12px;line-height:1.7}
+.banner.on{display:block}
+.state{display:none;text-align:center;padding:64px 12px 40px}
+.state.on{display:block}
+.state .ic{width:56px;height:56px;margin:0 auto 18px;border-radius:18px;border:1px solid var(--hair-2);
+  display:grid;place-items:center;color:var(--ink2)}
+.state h2{font-size:16px;font-weight:650}
+.state p{font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.8}
+.state button{margin-top:18px;appearance:none;border:1px solid var(--hair-2);background:transparent;
+  color:var(--ink);font:inherit;font-size:13px;padding:9px 18px;border-radius:999px;cursor:pointer}
+/* 骨架 */
+.skel{height:74px;border-radius:16px;border:1px solid var(--hair);background:
+  linear-gradient(100deg, rgba(255,255,255,.03) 20%, rgba(255,255,255,.07) 40%, rgba(255,255,255,.03) 60%);
+  background-size:220% 100%;animation:sh 1.5s infinite linear;margin-bottom:10px}
+@keyframes sh{to{background-position:-220% 0}}
+@media (prefers-reduced-motion: reduce){.skel{animation:none}}
+@media (max-width:400px){h1{font-size:29px}.wt{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="tile s22"><img src="./assets/mark.svg" alt=""></span>
+    <span class="nm">YU&rsquo;S DAILY SCOPE</span>
+    <span class="st"><i class="dot" id="dot"></i><span id="sync">已同步</span></span>
+    <button class="rf" id="rf" aria-label="刷新">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round">
+        <path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1"/><path d="M20.5 4.5V9H16"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="brandblk">
+    <span class="tile s58"><img src="./assets/mark.svg" alt="Yu's Daily Scope"></span>
+    <div class="tx"><b>Yu&rsquo;s Daily Scope</b><span>MORNING BRIEF &middot; 07:30</span></div>
+  </div>
+
+  <div class="banner" id="banner"></div>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="hdate"><span id="hdate">正在读取日期</span><i></i><span id="hissue"></span></div>
+      <h1 id="h1">小宇，<br><span class="soft">早上好。</span></h1>
+      <div class="voice">
+        <svg viewBox="0 0 44 40" width="17" height="15" fill="none" aria-hidden="true">
+          <path d="M22 7V3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".6"/>
+          <circle cx="22" cy="2.2" r="1.9" fill="var(--amber)"/>
+          <rect x="3.4" y="7.2" width="37.2" height="23.6" rx="10" stroke="currentColor" stroke-width="1.9" opacity=".5"/>
+          <circle cx="16" cy="19" r="5.7" fill="currentColor" opacity=".92"/>
+          <circle cx="28.2" cy="19" r="5.7" fill="currentColor" opacity=".38"/>
+          <circle cx="14.4" cy="17" r="1.5" fill="#fff" opacity=".9"/>
+          <path d="M13 35h18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" opacity=".26"/>
+        </svg>
+        <span id="voice">我天没亮就醒了，替你翻了一遍。</span>
+      </div>
+      <p class="bless" id="bless"></p>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <div class="sect"><span>今日机会</span><i></i><span id="count"></span></div>
+    <ul class="wlist" id="list"></ul>
+
+    <div class="quote">
+      <svg viewBox="0 0 44 40" width="26" height="24" fill="none" aria-hidden="true" style="color:var(--accent)">
+        <path d="M22 7V3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+        <circle cx="22" cy="2.2" r="1.8" fill="var(--amber)"/>
+        <rect x="3.4" y="7.2" width="37.2" height="23.6" rx="10" stroke="currentColor" stroke-width="1.7" opacity=".5"/>
+        <circle cx="16" cy="19" r="5.7" fill="currentColor" opacity=".92"/>
+        <circle cx="28.2" cy="19" r="5.7" fill="currentColor" opacity=".38"/>
+        <circle cx="14.4" cy="17" r="1.4" fill="#fff" opacity=".9"/>
+        <path d="M13 35h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".26"/>
+      </svg>
+      <div>
+        <div class="lb">DAILY NOTE</div>
+        <div class="qq" id="quote">把好奇变成动作，把日常看成风景。</div>
+      </div>
+    </div>
+
+    <div class="wfoot">
+      <span><b>Yu&rsquo;s Daily Scope</b> · 每日 07:30 更新<br><span id="stamp"></span></span>
+      <a href="#" id="refresh2">刷新 ↗</a>
+    </div>
+  </main>
+
+  <section class="state" id="st-loading">
+    <div class="skel"></div><div class="skel" style="height:74px"></div><div class="skel" style="height:74px"></div>
+    <p style="margin-top:16px">正在取今天的简报…</p>
+  </section>
+
+  <section class="state" id="st-empty">
+    <div class="ic">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/>
+      </svg>
+    </div>
+    <h2>今天还没有新内容</h2>
+    <p>简报每天 07:30 更新。<br>如果你刚发布过，等一两分钟再刷新。</p>
+    <button id="rf-empty">刷新试试</button>
+  </section>
+
+  <section class="state" id="st-error">
+    <div class="ic">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <path d="M12 7v6"/><circle cx="12" cy="16.6" r=".9" fill="currentColor" stroke="none"/>
+        <path d="M12 3.5 21 20H3z" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2>没读到内容</h2>
+    <p>可能是网络问题，或数据文件还没生成。<br>已成功读取过的内容会留在缓存里。</p>
+    <button id="rf-error">重试</button>
+  </section>
+
+</div>
+
+<script>
+const DATA_URL = "./data/briefing.json";
+const TZ = "Asia/Shanghai";
+const $ = id => document.getElementById(id);
+
+/* 主题：?theme=b 切换 */
+if (new URLSearchParams(location.search).get("theme") === "b") document.documentElement.dataset.theme = "b";
+
+/* ---------- 时间工具（一律按北京时间） ---------- */
+function shDate(d = new Date()){
+  const p = new Intl.DateTimeFormat("en-CA", {timeZone:TZ, year:"numeric", month:"2-digit", day:"2-digit"}).format(d);
+  return p; // YYYY-MM-DD
+}
+function parseDay(s){ return new Date(s + "T00:00:00+08:00"); }
+function diffDays(iso){
+  if(!iso) return null;
+  const a = parseDay(shDate()), b = parseDay(iso);
+  return Math.round((b - a) / 86400000);
+}
+function cnDate(iso){
+  const d = parseDay(iso);
+  const w = "日一二三四五六"[d.getDay()];
+  return `${d.getFullYear()} 年 ${d.getMonth()+1} 月 ${d.getDate()} 日 · 周${w}`;
+}
+function hhmm(d = new Date()){
+  return new Intl.DateTimeFormat("zh-CN", {timeZone:TZ, hour:"2-digit", minute:"2-digit", hour12:false}).format(d);
+}
+
+/* ---------- 渲染 ---------- */
+let DATA = null;
+
+function setState(name){
+  ["st-loading","st-empty","st-error"].forEach(k => $(k).classList.toggle("on", k === name));
+  $("main").style.display = name ? "none" : "block";
+}
+function setSync(kind, text){
+  const d = $("dot");
+  d.className = "dot" + (kind === "warn" ? " warn" : kind === "bad" ? " bad" : "");
+  $("sync").textContent = text;
+}
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function render(data){
+  DATA = data;
+  const items = Array.isArray(data.items) ? data.items : [];
+  if (!items.length){ setState("st-empty"); setSync("warn", "无内容"); return; }
+
+  const stale = data.date !== shDate();
+  $("banner").classList.toggle("on", stale);
+  if (stale){
+    const d = parseDay(data.date);
+    $("banner").innerHTML = `现在显示的是 <b>${d.getMonth()+1}/${d.getDate()}</b> 的内容，今天的新简报还没发布。`;
+    setSync("warn", "非今日");
+  } else {
+    setSync("ok", "已同步 " + hhmm());
+  }
+
+  $("hdate").textContent = cnDate(data.date);
+  $("hissue").textContent = data.issue ? "第 " + data.issue + " 期" : "";
+  $("h1").innerHTML = esc(data.greeting || "小宇，早上好。").replace(/(小宇，)/, "$1<br><span class=\"soft\">").replace(/。$/, "。</span>");
+  if (data.voice) $("voice").textContent = data.voice;
+  $("bless").textContent = data.blessing || "";
+
+  const hot = items.filter(it => it.date_kind === "deadline" && (diffDays(it.date_iso) ?? 99) <= 7).length;
+  const shows = items.filter(it => it.date_kind === "exhibition").length;
+  $("chips").innerHTML =
+    `<span class="chip">今日 ${items.length} 条</span>` +
+    (hot ? `<span class="chip hot">${hot} 条临近截止</span>` : "") +
+    (shows ? `<span class="chip">${shows} 场展期</span>` : "");
+  $("count").textContent = items.length + " 条";
+
+  $("list").innerHTML = items.map((it, i) => {
+    const n = String(it.no || i + 1).padStart(2, "0");
+    const dd = diffDays(it.date_iso);
+    const urgent = it.date_kind === "deadline" && dd !== null && dd >= 0 && dd <= 7;
+    const dayChip = (it.date_kind === "deadline" && dd !== null && dd >= 0 && dd <= 14)
+      ? `<span class="wday">${dd === 0 ? "今天截止" : "剩 " + dd + " 天"}</span>` : "";
+    const src = it.source_url
+      ? `<a class="wsrc" href="${esc(it.source_url)}" target="_blank" rel="noopener">${esc(it.source_name || new URL(it.source_url).hostname)} ↗</a>`
+      : "";
+    return `<li class="wi${urgent ? " hot" : ""}">
+      <div class="rowtop"><span class="wno">${n}</span><span class="wt">${esc(it.title)}</span></div>
+      <div class="wmeta"><span class="wdate">${esc(it.date_label || "日期待确认")}</span>${dayChip}</div>
+      ${it.summary ? `<div class="ws">${esc(it.summary)}</div>` : ""}
+      ${src}
+    </li>`;
+  }).join("");
+
+  $("quote").textContent = data.quote || "把好奇变成动作，把日常看成风景。";
+  const at = data.published_at ? new Date(data.published_at) : null;
+  $("stamp").textContent = at ? `更新于 ${hhmm(at)} · 第 ${data.issue || "-"} 期` : "";
+  setState(null);
+}
+
+/* ---------- 加载 ---------- */
+async function load(opts){
+  const btn = $("rf");
+  btn.classList.add("spin");
+  if (!opts || opts.silent !== true) setState("st-loading");
+  try {
+    const res = await fetch(DATA_URL + "?t=" + Date.now(), {cache:"no-store"});
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    localStorage.setItem("yus-cache", JSON.stringify(data));
+    render(data);
+  } catch (e) {
+    const cached = localStorage.getItem("yus-cache");
+    if (cached){
+      try {
+        render(JSON.parse(cached));
+        setSync("warn", "显示缓存 " + hhmm());
+        $("banner").classList.add("on");
+        $("banner").innerHTML = "网络没通，现在显示的是上次读到的内容。";
+      } catch(_){ setState("st-error"); setSync("bad", "读取失败"); }
+    } else {
+      setState("st-error"); setSync("bad", "读取失败");
+    }
+  } finally {
+    btn.classList.remove("spin");
+  }
+}
+
+$("rf").addEventListener("click", () => load());
+$("refresh2").addEventListener("click", e => { e.preventDefault(); load(); });
+$("rf-empty").addEventListener("click", () => load());
+$("rf-error").addEventListener("click", () => load());
+
+/* 回到前台时静默检查一次（同一小时只查一次） */
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible"){
+    const k = "yus-check-" + shDate() + "-" + new Date().getHours();
+    if (!sessionStorage.getItem(k)){ sessionStorage.setItem(k, "1"); load({silent:true}); }
+  }
+});
+
+load();
+</script>
+</body>
+</html>

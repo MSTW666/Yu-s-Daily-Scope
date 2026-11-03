@@ -1,0 +1,57 @@
+name: 每日发布 07:30
+
+# 说明：
+# GitHub Actions 的 cron 按 UTC 计时。23:30 UTC = 次日 07:30（北京时间 UTC+8）。
+# 免费额度下排队可能延迟几分钟到十几分钟，属正常现象。
+on:
+  schedule:
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "指定要发布的日期 YYYY-MM-DD（留空=北京时间今天）"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 提升排期文件（data/queue/<日期>.json → data/briefing.json）
+        run: node scripts/promote.mjs ${{ inputs.date != '' && format('--date={0}', inputs.date) || '' }}
+
+      - name: 校验线上数据
+        run: node scripts/validate.mjs data/briefing.json
+
+      - name: 提交并推送
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "没有变更，今天无需发布。"
+            exit 0
+          fi
+          git config user.name "yus-scope-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data
+          git commit -m "publish: $(TZ=Asia/Shanghai date +%F)"
+          git push
+
+      - name: 结果摘要
+        run: |
+          echo "### 发布结果" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- 线上日期：$(node -p "require('./data/briefing.json').date")" >> $GITHUB_STEP_SUMMARY
+          echo "- 条目数：$(node -p "require('./data/briefing.json').items.length")" >> $GITHUB_STEP_SUMMARY

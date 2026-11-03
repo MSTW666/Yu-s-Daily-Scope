@@ -1,0 +1,38 @@
+{
+  "issue": 129,
+  "date": "2026-11-04",
+  "greeting": "小宇，早上好。",
+  "voice": "我天没亮就醒了，替你翻了一遍。",
+  "blessing": "示例文件：把这段换成当天真实的内容，再改文件名为 2026-11-04.json 提交。",
+  "quote": "把好奇变成动作，把日常看成风景。",
+  "items": [
+    {
+      "title": "示例条目 · 一条临近截止的征集",
+      "summary": "summary 写两句话就够：谁可以投、要交什么。这段文字在组件里不显示，只在网页出现。",
+      "date_kind": "deadline",
+      "date_label": "截止 11/10",
+      "date_iso": "2026-11-10",
+      "source_name": "example.com",
+      "source_url": "https://example.com/"
+    },
+    {
+      "title": "示例条目 · 一场展览",
+      "summary": "展期用 exhibition，date_label 必须写「展至 …」，不能写「截止」。",
+      "date_kind": "exhibition",
+      "date_label": "展至 11/15",
+      "date_iso": "2026-11-15",
+      "source_name": "example.com",
+      "source_url": "https://example.com/"
+    },
+    {
+      "title": "示例条目 · 一段区间活动",
+      "summary": "区间用 range，date_iso 是开始日，date_end 是结束日，date_label 直接写「11/12–11/15」。",
+      "date_kind": "range",
+      "date_label": "11/12–11/15",
+      "date_iso": "2026-11-12",
+      "date_end": "2026-11-15",
+      "source_name": "example.com",
+      "source_url": "https://example.com/"
+    }
+  ]
+}
