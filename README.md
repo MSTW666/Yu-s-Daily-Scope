@@ -132,14 +132,20 @@ node scripts/validate.mjs data/queue/2026-11-05.json
 
 ## 三、接上 iPhone 小组件
 
-打开 Scriptable 里的 `yus-daily-scope.js`，只改两行：
+脚本在 `scriptable/yus-daily-scope.js`（与 `handoff/yus-daily-scope.js` 是同一份）。整段复制进 Scriptable 即可，地址已经填好：
 
-```js
-const API_URL = "https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json";
-const WEB_URL = "https://mstw666.github.io/Yu-s-Daily-Scope/";
-```
+| 常量 | 值 |
+|---|---|
+| `API_URL` | https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json |
+| `WEB_URL` | https://mstw666.github.io/Yu-s-Daily-Scope/ |
 
-其余不用动：脚本会缓存、判三态（已同步 / 显示缓存 / 非今日）、按小时切换问候语。
+**换地址只改这两行。** 换配色不用改代码：长按小组件 → 编辑小组件 → Parameter 填 `theme=b`；缓存出问题时填 `reset=1` 强制重拉。
+
+网页与组件读同一份 JSON，所以 GPT 改 `greeting` / `voice` / `blessing` / `quote` / `items` 会同时作用于两端，**不用再动 Scriptable**。脚本自带缓存与四态（已同步 / 缓存 / 非今日 / 读取失败）。
+
+> 首次使用先在 iPhone Safari 打开 `API_URL`，能看到 JSON 才算链路通。国内网络若打不开 github.io，组件会退回缓存并显示「缓存 hh:mm」；需要代理或换可直连的托管。
+>
+> 旧版施工单里写的 Replit 地址已作废，以这份 v4 为准。
 
 ---
 
