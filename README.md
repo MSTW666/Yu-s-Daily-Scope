@@ -11,7 +11,11 @@
 
 **直接体验** · [打开当前网页版](https://mstw666.github.io/Yu-s-Daily-Scope/) · [查看当前 Scriptable 脚本](scriptable/yus-daily-scope.js)
 
-## 产品展示
+## 01 · 从主屏幕到原文
+
+[![深空蓝绿界面预览，左侧网页版，右侧 iPhone 小组件](assets/overview-preview.svg)](https://mstw666.github.io/Yu-s-Daily-Scope/about.html)
+
+*静态展示沿用产品页 01 的示例内容与配色。点击图片可查看完整预览。*
 
 [打开完整产品介绍页 ↗](https://mstw666.github.io/Yu-s-Daily-Scope/about.html)
 
@@ -55,4 +59,3 @@
 **取景框 × 星球。** 取景框借自摄影，呼应小宇的兴趣，也代表读者自己选定的关注范围。框中的星球代表每天进入视野的新发现。这枚标志同时用作网页图标。
 
 **从扫一眼到看原文。** 点击 iPhone 小组件进入完整简报网页。网页保留每条机会的说明和来源入口，点来源名称即可在新标签页打开原文，继续核对资格、费用和报名条件。网页的刷新入口可以重新读取简报。
-
