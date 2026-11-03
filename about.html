@@ -16,7 +16,7 @@ section{margin-bottom:52px}h2{display:flex;align-items:center;gap:12px;margin:0 
 <nav><strong><img src="assets/mark.svg" alt="">Yu’s Daily Scope</strong><a href="index.html">打开简报 ↗</a></nav>
 <main>
 <header><small>PERSONAL DAILY BRIEFING</small><h1>Yu’s <span>Daily Scope</span></h1><p>小宇晨报是一份按个人兴趣定制的每日简报。小宇关注摄影征集、附近展览和机器人活动，你也可以选择自己的关注范围。</p><a class="button" href="index.html">读一份真实简报 ↗</a></header>
-<section><h2><span class="num">01</span> 从主屏幕到原文</h2><div class="grid">
+<section><h2><span class="num">01</span> 从主屏幕到原文</h2><p>深空蓝绿 · 左侧是 iPhone 小组件，右侧是手机网页版。以下为界面设计预览。</p><div id="overview-preview" style="margin-bottom:24px"></div><div class="grid">
 <article class="card"><small>WEB / 当前网页版</small><h3>每条机会都有来处</h3><p>网页展开完整摘要、日期和来源。读完可以直接去原文确认参与条件。</p><a class="button" href="index.html">独立打开 ↗</a></article>
 <article class="card"><small>IPHONE / SCRIPTABLE</small><h3>扫一眼，再决定读哪条</h3><ol><li>在主屏幕扫读标题与日期。</li><li>点小组件打开网页，阅读完整摘要。</li><li>点条目来源，打开原文核对资格、费用和报名条件。</li></ol><a class="button" href="scriptable/yus-daily-scope.js">查看小组件脚本 ↗</a></article>
 </div></section>
@@ -531,7 +531,11 @@ const swB = [["#08070F","底 深"],["#181234","底 浅"],["#A99BFF","主光"],["
 document.getElementById("swA").innerHTML = swA.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
 document.getElementById("swB").innerHTML = swB.map(([h,n])=>`<div class="sw"><i style="background:${h}"></i><b>${n}</b><span>${h}</span></div>`).join("");
 
-})(root); }</script></section>
+})(root);
+const overview = document.getElementById("overview-preview").attachShadow({mode:"open"});
+const stage = root.querySelector('.stage[data-th="a"]');
+overview.append(root.querySelector("style").cloneNode(true), stage.cloneNode(true));
+}</script></section>
 <section aria-label="完整品牌设计稿"><div id="original-0"></div><template id="design-0"><style>
 *{box-sizing:border-box}
 html,.reference-body{margin:0;padding:0}
