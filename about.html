@@ -17,7 +17,7 @@ section{margin-bottom:52px}h2{display:flex;align-items:center;gap:12px;margin:0 
 <main>
 <header><small>PERSONAL DAILY BRIEFING</small><h1>Yu’s <span>Daily Scope</span></h1><p>小宇晨报是一份按个人兴趣定制的每日简报。小宇关注摄影征集、附近展览和机器人活动，你也可以选择自己的关注范围。</p><a class="button" href="index.html">读一份真实简报 ↗</a></header>
 <section><h2><span class="num">01</span> 从主屏幕到原文</h2><div class="grid">
-<article class="card"><small>WEB / 当前网页版</small><iframe title="小宇晨报实时网页" src="index.html" loading="lazy"></iframe><a class="button" href="index.html">独立打开 ↗</a></article>
+<article class="card"><small>WEB / 当前网页版</small><h3>每条机会都有来处</h3><p>网页展开完整摘要、日期和来源。读完可以直接去原文确认参与条件。</p><a class="button" href="index.html">独立打开 ↗</a></article>
 <article class="card"><small>IPHONE / SCRIPTABLE</small><h3>扫一眼，再决定读哪条</h3><ol><li>在主屏幕扫读标题与日期。</li><li>点小组件打开网页，阅读完整摘要。</li><li>点条目来源，打开原文核对资格、费用和报名条件。</li></ol><a class="button" href="scriptable/yus-daily-scope.js">查看小组件脚本 ↗</a></article>
 </div></section>
 <section><h2><span class="num">02</span> 品牌与角色</h2><div class="grid">
@@ -25,9 +25,15 @@ section{margin-bottom:52px}h2{display:flex;align-items:center;gap:12px;margin:0 
 <article class="card"><img src="assets/yu-1.svg" alt="YU-1 小机器人"><h3>YU-1 · 清晨的简报编辑</h3><p>「我天没亮就醒了，替你翻了一遍。」用一句短问候开场，然后把机会和时间交给读者。</p></article>
 </div></section>
 <section><h2><span class="num">03</span> 定制你的版本</h2><div class="card"><ol><li>选定主题，例如摄影、城市活动或独立开发。</li><li>用排期模板填写标题、摘要、日期与来源。</li><li>安排每日发布，让网页与小组件读取同一份简报。</li></ol><a class="button" href="https://github.com/MSTW666/Yu-s-Daily-Scope">在 GitHub 开始定制 ↗</a></div></section>
-<section><h2><span class="num">04</span> 设计档案</h2><div class="grid">
-<article class="card"><small>BRAND / 品牌规范</small><h3>标志的构造与应用</h3><p>查看原版设计稿中的构造网格、安全边距、横竖版标志、反白与单色变体、配色和字标规范。原稿还提供 SVG 下载。</p><a class="button" href="brand-guide.html">展开品牌设计 ↗</a></article>
-<article class="card"><small>UI / 界面设计稿</small><h3>两套颜色，一个机器人</h3><p>对比深空蓝绿和星云靛紫，查看网页与 iPhone 小组件的设计稿，以及两条内容时的布局、YU-1 问候与状态细节。</p><a class="button" href="interface-preview.html">查看界面设计稿 ↗</a></article>
+<section><h2><span class="num">04</span> 品牌设计</h2>
+<div class="grid">
+<article class="card"><small>MARK / 标志构造</small><div style="padding:32px;background:repeating-linear-gradient(0deg,transparent 0 15px,#27444a 15px 16px),repeating-linear-gradient(90deg,transparent 0 15px,#27444a 15px 16px)"><img src="assets/mark.svg" alt="取景框与星球标志"></div><h3>在取景框里发现新机会</h3><p>原稿使用 96 单位网格和 12 单位安全边距。方框定义关注范围，星球构成视觉焦点。</p></article>
+<article class="card"><small>COLOR / 界面色彩</small><h3>深空蓝绿</h3><p>深蓝打底，青绿色提示状态与操作，暖黄色突出近期截止。</p><p><span style="color:#63d3bf">● 青绿 #63D3BF</span>　<span style="color:#f1c489">● 暖黄 #F1C489</span></p><h3 style="color:#a99bff">星云靛紫</h3><p>紫色主题以靛紫打底，保留暖黄色的日期提示。</p></article>
+</div></section>
+<section><h2><span class="num">05</span> 界面如何呈现简报</h2>
+<div class="grid">
+<article class="card"><small>IPHONE / 内容较多</small><h3>先扫标题，再看日期</h3><p>大号组件放前六条，中号接续第七至第九条。日期靠右排列，临近的报名和投稿截止用暖色强调。</p><p>摄影征集　<span style="color:#f1c489">截止 11/29</span><br>未来工程师挑战　<span style="color:#f1c489">截止 11/10</span></p></article>
+<article class="card"><small>IPHONE / 只有两条</small><h3>把留白交给 YU-1</h3><img src="assets/yu-1.svg" alt="YU-1 机器人"><p>少量条目优先集中在大号组件。设计稿把余下空间留给机器人和每日一句。</p></article>
 </div></section>
 <footer>YU’S DAILY SCOPE · 小宇晨报</footer>
 </main>
