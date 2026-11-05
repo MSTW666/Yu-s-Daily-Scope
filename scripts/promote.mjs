@@ -56,7 +56,12 @@ if (fs.existsSync(liveFile)) {
   } catch {}
 }
 
-next.date = date;                       // 以排期日期为准
+if (next.date !== date) {
+  throw new Error('排期内容日期与文件名不同，拒绝把旧正文改成新日期');
+}
+if (fs.existsSync(liveFile) && JSON.parse(fs.readFileSync(liveFile, 'utf8')).date > date) {
+  throw new Error('拒绝用旧日期覆盖当前简报');
+}
 if (!next.published_at) {
   next.published_at = `${date}T07:30:00+08:00`;
 }
