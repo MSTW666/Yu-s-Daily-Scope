@@ -45,7 +45,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
   let verified=false;
   for(let i=0;i<12;i++){
     try{
-      const output=execFileSync('powershell.exe',['-NoProfile','-NonInteractive','-Command',"$ProgressPreference='SilentlyContinue'; Invoke-RestMethod -Uri ('https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json?t='+[DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()) | ConvertTo-Json -Depth 20 -Compress"],{encoding:'utf8',windowsHide:true});
+      const output=execFileSync('powershell.exe',['-NoProfile','-NonInteractive','-Command',"[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new(); $ProgressPreference='SilentlyContinue'; Invoke-RestMethod -Uri ('https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json?t='+[DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()) | ConvertTo-Json -Depth 20 -Compress"],{encoding:'utf8',windowsHide:true});
       const actual=JSON.parse(output.replace(/^\uFEFF/,''));
       if(actual.date===expected.date&&actual.sourceMessageId===expected.sourceMessageId&&JSON.stringify(actual.items)===JSON.stringify(expected.items)){verified=true;break;}
     }catch{}
