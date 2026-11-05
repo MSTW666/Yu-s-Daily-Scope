@@ -1,94 +1,31 @@
 {
-  "issue": 128,
-  "date": "2026-11-03",
+  "date": "2026-11-05",
   "greeting": "小宇，早上好。",
-  "voice": "我天没亮就醒了，替你翻了一遍。",
-  "blessing": "今天有 9 件值得看，2 件快到截止。我把急的放在前面了，你慢慢来。",
-  "quote": "把好奇变成动作，把日常看成风景。",
-  "published_at": "2026-11-03T07:30:00+08:00",
+  "voice": "今天捡到两项新机会，留点时间慢慢准备。",
+  "blessing": "愿你的好奇心，成为下一件作品的起点。",
+  "quote": "把观察留给生活，把想法做成作品。",
+  "sourceNote": "摘自「设置每日活动搜集」11 月 5 日简报，忠实整理，未另行核验。问候、机器人旁白、祝福与格言为原创。",
   "items": [
     {
-      "title": "索尼世界摄影奖 2027 开放组征集",
-      "summary": "五张单张即可投稿，学生组免报名费。作品须为 2026 年内拍摄。",
-      "date_kind": "deadline",
-      "date_label": "截止 11/10",
-      "date_iso": "2026-11-10",
-      "source_name": "sony-worldphotography.org",
-      "source_url": "https://www.worldphoto.org/sony-world-photography-awards"
-    },
-    {
-      "title": "「光的褶皱」杉本博司个展",
-      "summary": "上海摄影艺术中心，本周新增周五夜场。展陈共 42 件银盐原作。",
-      "date_kind": "exhibition",
-      "date_label": "展至 11/15",
-      "date_iso": "2026-11-15",
-      "source_name": "scopepaimages.org",
-      "source_url": "https://www.scopepaimages.org/"
-    },
-    {
-      "title": "2026 三影堂摄影奖 · 征稿",
-      "summary": "面向 40 岁以下创作者，提交 10–20 张组照与一份自述。",
-      "date_kind": "deadline",
-      "date_label": "截止 11/20",
-      "date_iso": "2026-11-20",
-      "source_name": "threeshadows.cn",
-      "source_url": "https://www.threeshadows.cn/"
-    },
-    {
-      "title": "连州国际摄影年展",
-      "summary": "四天展期，本届主题「回声」。市区设两个主展场，可买通票。",
-      "date_kind": "range",
-      "date_label": "11/12–11/15",
-      "date_iso": "2026-11-12",
-      "date_end": "2026-11-15",
-      "source_name": "lianzhoufoto.com",
-      "source_url": "http://www.lianzhoufoto.com/"
-    },
-    {
-      "title": "小米影像大赛 2026 秋季赛",
-      "summary": "手机拍摄不限品牌，单张与组照分设赛道，入围作品线下巡展。",
+      "title": "DDC 2026 地瓜机器人黑客松",
+      "summary": "12月5—7日上海张江科学会堂。可个人申请，录取后2—4人跨校组队，需到场。餐宿免费，交通支持额度、报名费未明确。报名截止时刻及时区未公布，表单提交未验证。先准备一页项目简介与Demo。",
       "date_kind": "deadline",
       "date_label": "截止 11/30",
       "date_iso": "2026-11-30",
-      "source_name": "mi.com",
-      "source_url": "https://www.mi.com/"
+      "source_name": "地瓜机器人黑客松官网",
+      "source_url": "https://hackathon.d-robotics.cc/"
     },
     {
-      "title": "上海双年展「岛屿与潮汐」",
-      "summary": "PSA 主展场，含影像单元 18 位艺术家。周三夜场免费。",
-      "date_kind": "exhibition",
-      "date_label": "展至 2027/3/31",
-      "date_iso": "2027-03-31",
-      "source_name": "powerstationofart.com",
-      "source_url": "https://www.powerstationofart.com/"
-    },
-    {
-      "title": "富士 GFX 全球挑战赛",
-      "summary": "中画幅专项，需提交原始 RAW 与拍摄说明，获奖作品进东京联展。",
+      "title": "Earth Photo 2027 摄影／短片征集",
+      "summary": "全球免费投稿，最多10件。原则上近五年作品，长期项目可含更早素材；短片5秒—5分钟。截止时25岁及以下有青年奖机会。具体截止时刻、时区未明确，文件规格、授权条款和后期限制需提交前核对。",
       "date_kind": "deadline",
-      "date_label": "截止 12/05",
-      "date_iso": "2026-12-05",
-      "source_name": "fujifilm.com",
-      "source_url": "https://www.fujifilm.com/"
-    },
-    {
-      "title": "ICP 线上大师课 · 影像叙事",
-      "summary": "两晚直播，讲编排与编辑逻辑，含一次作品点评。报名限 120 人。",
-      "date_kind": "range",
-      "date_label": "11/18–11/19",
-      "date_iso": "2026-11-18",
-      "date_end": "2026-11-19",
-      "source_name": "icp.org",
-      "source_url": "https://www.icp.org/"
-    },
-    {
-      "title": "深圳「AI 与影像」论坛",
-      "summary": "半日论坛，四场分享涉及生成式工具在报道摄影里的边界。免费预约。",
-      "date_kind": "event",
-      "date_label": "11/22",
-      "date_iso": "2026-11-22",
-      "source_name": "szippa.org",
-      "source_url": "https://www.szippa.org/"
+      "date_label": "截止 2027/2/3",
+      "date_iso": "2027-02-03",
+      "source_name": "Photoworks 征集说明",
+      "source_url": "https://photoworks.org.uk/opportunities/open-call-earth-photo-2027/"
     }
-  ]
+  ],
+  "issue": 129,
+  "sourceMessageId": "38a223c2-c46c-57d8-a638-bbc926e89514",
+  "published_at": "2026-11-05T02:51:02.405Z"
 }
