@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-05",
+  "greeting": "小宇，早上好。",
+  "voice": "今天捡到两项新机会，留点时间慢慢准备。",
+  "blessing": "愿你的好奇心，成为下一件作品的起点。",
+  "quote": "把观察留给生活，把想法做成作品。",
+  "sourceNote": "摘自「设置每日活动搜集」11 月 5 日简报，忠实整理，未另行核验。问候、机器人旁白、祝福与格言为原创。",
+  "items": [
+    {
+      "title": "DDC 2026 地瓜机器人黑客松",
+      "summary": "12月5—7日上海张江科学会堂。可个人申请，录取后2—4人跨校组队，需到场。餐宿免费，交通支持额度、报名费未明确。报名截止时刻及时区未公布，表单提交未验证。先准备一页项目简介与Demo。",
+      "date_kind": "deadline",
+      "date_label": "截止 11/30",
+      "date_iso": "2026-11-30",
+      "source_name": "地瓜机器人黑客松官网",
+      "source_url": "https://hackathon.d-robotics.cc/"
+    },
+    {
+      "title": "Earth Photo 2027 摄影／短片征集",
+      "summary": "全球免费投稿，最多10件。原则上近五年作品，长期项目可含更早素材；短片5秒—5分钟。截止时25岁及以下有青年奖机会。具体截止时刻、时区未明确，文件规格、授权条款和后期限制需提交前核对。",
+      "date_kind": "deadline",
+      "date_label": "截止 2027/2/3",
+      "date_iso": "2027-02-03",
+      "source_name": "Photoworks 征集说明",
+      "source_url": "https://photoworks.org.uk/opportunities/open-call-earth-photo-2027/"
+    }
+  ],
+  "issue": 129,
+  "sourceMessageId": "38a223c2-c46c-57d8-a638-bbc926e89514",
+  "published_at": "2026-11-05T02:51:02.405Z"
+}
