@@ -19,7 +19,10 @@ export function checkEnvelope(e, day=today()) {
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   const input=path.resolve(process.argv[2]||'');
   const envelope=JSON.parse(fs.readFileSync(input,'utf8'));
-  const b=checkEnvelope(envelope);
+  // Manual backfill only: caller must supply the original date explicitly.
+  const backfill=process.argv.find(a=>a.startsWith('--backfill-date='))?.split('=')[1];
+  if(backfill&&(!/^\d{4}-\d{2}-\d{2}$/.test(backfill)||backfill>today()))throw Error('Invalid backfill date');
+  const b=checkEnvelope(envelope,backfill||today());
   if(process.argv.includes('--check')){console.log('Validated '+b.date+' / '+b.items.length+' items');process.exit(0);}
   const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
   const git=(...args)=>execFileSync('git',['-c','http.proxy=http://127.0.0.1:7897','-c','http.sslBackend=openssl',...args],{cwd:repo,encoding:'utf8',windowsHide:true}).trim();
