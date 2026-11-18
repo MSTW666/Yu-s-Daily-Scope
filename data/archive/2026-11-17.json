@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-17",
+  "greeting": "小宇，早上好。",
+  "voice": "一个报名提醒，一场摄影云看展。",
+  "blessing": "愿今天的观察为创作添一点灵感。",
+  "quote": "让想法在行动中变得清晰。",
+  "sourceNote": "整理自「设置每日活动搜集」北京时间2026年11月17日完整简报，未另搜内容，保留待核实条件；问候、旁白、祝福、格言为原创。苏沪附近暂未核实到值得新增推荐的活动。",
+  "items": [
+    {
+      "title": "PAYATHON 2026：线上AI黑客松报名提醒",
+      "summary": "报名2026年9月21日至12月1日23:59:59，剩14天；作品12月9日23:59:59前提交，剩22天，官网未明时区。12月26日线下决赛，城市场馆待核实。支持个人或2–5人团队，未列学校年级限制；细则未能加载，年龄地区及账户要求需报名时确认。暂无完整产品也可报名，作品需接入对应支付能力。报名费未明确，开发部署成本自行核算。适合把AI应用做成付费交付产品，本周先验证用户和付费需求；评审关注产品完整度、支付流程和真实反馈。未取得稳定可展示当届海报。",
+      "date_kind": "deadline",
+      "date_label": "报名截止 12/01 23:59:59",
+      "date_iso": "2026-12-01",
+      "source_name": "支付宝官方报名、赛程与规则",
+      "source_url": "https://aipay.alipay.com/community/events/payathon-2026"
+    },
+    {
+      "title": "南·戈尔丁：You Never Did Anything Wrong",
+      "summary": "伦敦海沃德美术馆2026年11月24日至2027年3月14日展出，距开幕一周；采用当前馆方日期，早期新闻稿曾列3月7日闭展。含四部近期影像作品，包括Memory Lost、Stendhal Syndrome及首次公开的You never did anything wrong, Part II（2026），配合静帧和档案图像。馆方精选作品图文可免费在线预习，无需学生资格；未确认完整影片或全景线上展。现场普通票£19，建议12岁以上，学生优惠未核实。可观察偏色、运动模糊、近距离视角的情绪表达。馆方精选Electric Gaja, Paris（2010）；The Crowd, Paternò（2004）复制图来自Fraenkel Gallery 2023资料，也列本届馆方精选：https://fraenkelgallery.com/exhibitions/deep-dive-nan-goldin",
+      "date_kind": "exhibition",
+      "date_label": "展期 11/24—2027/03/14",
+      "date_iso": "2026-11-24",
+      "date_end": "2027-03-14",
+      "source_name": "海沃德美术馆作品图、介绍与购票",
+      "source_url": "https://www.southbankcentre.co.uk/whats-on/nan-goldin-you-never-did-anything-wrong/"
+    }
+  ],
+  "issue": 134,
+  "sourceMessageId": "4df2fcfd-f6af-5d5a-a87c-3508006b2be1",
+  "published_at": "2026-11-17T01:24:28.265Z"
+}

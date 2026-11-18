@@ -1,32 +1,31 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "greeting": "小宇，早上好。",
-  "voice": "一个报名提醒，一场摄影云看展。",
-  "blessing": "愿今天的观察为创作添一点灵感。",
-  "quote": "让想法在行动中变得清晰。",
-  "sourceNote": "整理自「设置每日活动搜集」北京时间2026年11月17日完整简报，未另搜内容，保留待核实条件；问候、旁白、祝福、格言为原创。苏沪附近暂未核实到值得新增推荐的活动。",
+  "voice": "两项上海开发机会，从小原型到可玩的作品。",
+  "blessing": "愿今天的动手，让想法更进一步。",
+  "quote": "把一个小功能做好，也是一种创造。",
+  "sourceNote": "整理自「设置每日活动搜集」北京时间2026年11月18日完整简报；信息及待核实条件沿用原文，未另搜。问候、旁白、祝福和格言为原创。摄影与艺术方向今天暂未核实到值得新增项目。",
   "items": [
     {
-      "title": "PAYATHON 2026：线上AI黑客松报名提醒",
-      "summary": "报名2026年9月21日至12月1日23:59:59，剩14天；作品12月9日23:59:59前提交，剩22天，官网未明时区。12月26日线下决赛，城市场馆待核实。支持个人或2–5人团队，未列学校年级限制；细则未能加载，年龄地区及账户要求需报名时确认。暂无完整产品也可报名，作品需接入对应支付能力。报名费未明确，开发部署成本自行核算。适合把AI应用做成付费交付产品，本周先验证用户和付费需求；评审关注产品完整度、支付流程和真实反馈。未取得稳定可展示当届海报。",
-      "date_kind": "deadline",
-      "date_label": "报名截止 12/01 23:59:59",
-      "date_iso": "2026-12-01",
-      "source_name": "支付宝官方报名、赛程与规则",
-      "source_url": "https://aipay.alipay.com/community/events/payathon-2026"
+      "title": "AgentHack Shanghai：单日AI智能体开发",
+      "summary": "12月12日周六10:30开始、18:00颁奖，上海阿里巴巴徐汇滨江园区，具体入场以通知为准，按上海当地时间理解。活动距简报24天，报名入口已发布，限70人、报满即止；独立截止、余位及审核结果未核实，活动日不是报名截止。支持个人或团队、欢迎Elasticsearch初学者，未列学校年级限制，团队上限未说明。指定Qoder CN，约4小时创作，可新建或扩展项目，交可演示成果。有午餐、一个月Qoder CN专业版及导师；票价、交通、额外云资源费待核实。可提前用自写笔记或获准公开资料跑通检索、回答与出处标注。Elastic中国社区官方博客公告2026年11月3日，详情：https://devpress.csdn.net/aibjcy/6ae93688e5f4ca4eff8e0475.html",
+      "date_kind": "event",
+      "date_label": "活动 12/12；报名满70人即止",
+      "date_iso": "2026-12-12",
+      "source_name": "Elastic官方报名与社区说明",
+      "source_url": "https://elastic.huodongxing.com/event/5885527618000"
     },
     {
-      "title": "南·戈尔丁：You Never Did Anything Wrong",
-      "summary": "伦敦海沃德美术馆2026年11月24日至2027年3月14日展出，距开幕一周；采用当前馆方日期，早期新闻稿曾列3月7日闭展。含四部近期影像作品，包括Memory Lost、Stendhal Syndrome及首次公开的You never did anything wrong, Part II（2026），配合静帧和档案图像。馆方精选作品图文可免费在线预习，无需学生资格；未确认完整影片或全景线上展。现场普通票£19，建议12岁以上，学生优惠未核实。可观察偏色、运动模糊、近距离视角的情绪表达。馆方精选Electric Gaja, Paris（2010）；The Crowd, Paternò（2004）复制图来自Fraenkel Gallery 2023资料，也列本届馆方精选：https://fraenkelgallery.com/exhibitions/deep-dive-nan-goldin",
-      "date_kind": "exhibition",
-      "date_label": "展期 11/24—2027/03/14",
-      "date_iso": "2026-11-24",
-      "date_end": "2027-03-14",
-      "source_name": "海沃德美术馆作品图、介绍与购票",
-      "source_url": "https://www.southbankcentre.co.uk/whats-on/nan-goldin-you-never-did-anything-wrong/"
+      "title": "松江创世纪：AI游戏创作创业大赛",
+      "summary": "征集2026年9月14日至12月6日23:59（北京时间），距截止18天，平台报名中。主要面向大学生，其他创作者亦可；个人或最多5人团队，未限学校年级。允许已有作品，无AI使用比例门槛，须如实声明工具及用法。自由创作不限题材；松江印象围绕松江文化城市生活。交试玩或下载链接至少一项、介绍、封面、创作者资料及AI声明，报名费未明确。12月21日公布拟入围，2027年1月9日决赛原则在上海上影昊浦智慧产业社区，线上条件待通知。现行正式规则两赛道现金奖金合计3万元，早期13万元宣传不能当成本赛直接奖金。先确认组员意愿及课程作品公开要求、音乐图片字体授权，打磨完整关卡、说明及稳定试玩包，争取12月2日前提交。完整规则：https://aiplaylab.cn/topics/songjiang-ai-genesis-2026/rules",
+      "date_kind": "deadline",
+      "date_label": "投稿截止 12/06 23:59 北京时间",
+      "date_iso": "2026-12-06",
+      "source_name": "官方赛事平台与完整规则",
+      "source_url": "https://aiplaylab.cn/topics/songjiang-ai-genesis-2026"
     }
   ],
-  "issue": 134,
-  "sourceMessageId": "4df2fcfd-f6af-5d5a-a87c-3508006b2be1",
-  "published_at": "2026-11-17T01:24:28.265Z"
+  "issue": 135,
+  "sourceMessageId": "4d067fd8-575c-510a-824f-9277f1f73d48",
+  "published_at": "2026-11-18T06:01:54.408Z"
 }
