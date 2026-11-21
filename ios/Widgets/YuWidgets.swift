@@ -2,7 +2,7 @@ import WidgetKit
 import SwiftUI
 
 struct Feed: Decodable { let date: String; let items: [Row] }
-struct Row: Decodable { let title: String; let date_label: String? }
+struct Row: Decodable { let title: String; let summary: String?; let date_label: String? }
 struct Entry: TimelineEntry { let date: Date; let feed: Feed? }
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> Entry { Entry(date: .now, feed: nil) }
@@ -20,15 +20,16 @@ struct WidgetView: View {
     let entry: Entry
     @Environment(\.widgetFamily) var family
     var body: some View {
-        let start = family == .systemLarge ? 0 : 6
-        let rows = Array((entry.feed?.items ?? []).enumerated()).dropFirst(start).prefix(family == .systemLarge ? 6 : 3)
+        let expanded = family != .systemMedium
+        let start = expanded ? 0 : 6
+        let rows = Array((entry.feed?.items ?? []).enumerated()).dropFirst(start).prefix(family == .systemMedium ? 3 : (family == .systemLarge ? 6 : 9))
         VStack(alignment: .leading, spacing: 8) {
             HStack { Text("◉ 小宇日报"); Spacer(); Text(entry.feed?.date ?? "等待同步") }.font(.caption)
-            if family == .systemLarge { Text("小宇，早上好。").font(.title2.bold()) }
+            if expanded { Text("小宇，早上好。").font(.title2.bold()) }
             ForEach(Array(rows), id: \.offset) { index, item in
                 HStack {
                     Text(String(format: "%02d", index + 1)).foregroundStyle(.secondary)
-                    Text(item.title).lineLimit(1)
+                    VStack(alignment: .leading, spacing: 5) { Text(item.title).lineLimit(1); if family != .systemLarge && expanded { Text(item.summary ?? "").font(.caption).foregroundStyle(.secondary).lineLimit(2) } }
                     Spacer(minLength: 4)
                     Text(item.date_label ?? "待确认").font(.caption2).foregroundStyle(Color.yellow).lineLimit(1)
                 }.font(.caption).padding(6).background(.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 8))
@@ -40,9 +41,14 @@ struct WidgetView: View {
 }
 @main struct YuWidgets: Widget {
     let kind = "YuDailyScope"
+    private var sizes: [WidgetFamily] {
+        if #available(iOS 27.0, *) { return [.systemLarge, .systemMedium, .systemExtraLargePortrait] }
+        return [.systemLarge, .systemMedium]
+    }
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { WidgetView(entry: $0) }
             .configurationDisplayName("小宇日报").description("大号前六条，中号接续后三条")
-            .supportedFamilies([.systemLarge, .systemMedium])
+            .supportedFamilies(sizes)
     }
 }
+
