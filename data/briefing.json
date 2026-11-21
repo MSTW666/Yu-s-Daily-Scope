@@ -1,41 +1,32 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-21",
   "greeting": "小宇，早上好。",
-  "voice": "研究机器人规则，看艺术与算力相遇，为摄影投稿留足时间。",
-  "blessing": "愿今天的观察与准备，都有新的收获。",
-  "quote": "先看清问题，再把想法做出来。",
-  "sourceNote": "整理自「设置每日活动搜集」北京时间2026年11月19日完整简报，2条新发现、1条截止提醒；保留原文待核实条件，未另搜。问候、旁白、祝福和格言为原创。",
+  "voice": "一场AI编程活动，一项建筑摄影投稿提醒。",
+  "blessing": "愿今天的尝试与观察都有收获。",
+  "quote": "把问题带进实践，把观察留在作品里。",
+  "sourceNote": "整理自「设置每日活动搜集」北京时间2026年11月21日完整简报，保留待核实条件，未另搜；问候、旁白、祝福和格言为原创。",
   "items": [
     {
-      "title": "ROBOCON 2027：规则研究与校内组队",
-      "summary": "官网已发布第二十六届女娲补天竞技赛规则V2（10月20日）和2027足式机器人挑战赛V2.0（10月29日）。报名起止、赛期、举办地未核实，常设报名按钮不代表开放。学籍、队伍人数、跨校限制及费用需核对当届完整规则与报名通知，不保证新生能直接报名。可先下载规则整理任务、尺寸、控制约束，确认校内参赛队、导师及资源后决定投入；适合机械、电控、感知控制的长期工程实践。未有可核实当届海报。规则更新：https://robocon.org.cn/",
-      "date_kind": "tbd",
-      "date_label": "报名与赛期待核实",
-      "date_iso": null,
-      "source_name": "ROBOCON官方规则及PDF",
-      "source_url": "https://robocon.org.cn/sys-nd/133.html"
+      "title": "阿里云AI Coding嘉年华",
+      "summary": "2026年12月2—3日上海西岸艺术中心，距开幕11天。含开幕式、专题交流、3000平方米实操嘉年华，围绕AI编程工具、Agent基础设施及需求到上线流程。官方11月13日公告有报名入口，但表单未能读取，剩余名额、截止、费用、本科生准入均待确认，不保证直接入场。可带着课件自动总结的定时运行、登录权限、引用与遗漏检查问题交流；先核对表单和议程，再决定是否占用上课日。官方报名：https://hd.aliyun.com/form/9278?hid=37148&channelId=8160&empId=",
+      "date_kind": "event",
+      "date_label": "活动 12/02—12/03；报名待确认",
+      "date_iso": "2026-12-02",
+      "date_end": "2026-12-03",
+      "source_name": "阿里云官方介绍与报名",
+      "source_url": "https://startup.aliyun.com/info/1093776.html"
     },
     {
-      "title": "织光：从一根丝到算力之路",
-      "summary": "2026年11月16日至2027年1月1日，苏州工业园区新裕大厦（AI创新大厦）；苏大艺术学院与恒泰商置联合主办，有南艺术馆承办。以线联系丝织、光纤、信息传输和计算，含纤维、雕塑、装置、影像和数字媒介，可观察技术关系如何变为可感作品及透明材料、投影反射。管委会11月17日报道与现场图，单件名称作者未标。开放时间、楼层、预约、费用未注明，产业大厦实际运营，先向承办方确认访客入场；无可确认预约截止。苏大11月18日介绍：https://ysxy.suda.edu.cn/0f/17/c3183a724759/page.htm",
-      "date_kind": "exhibition",
-      "date_label": "展至 2027/01/01",
-      "date_iso": "2026-11-16",
-      "date_end": "2027-01-01",
-      "source_name": "苏州工业园区管委会官方图文",
-      "source_url": "https://www.sipac.gov.cn/szgyyq/tsyq/202611/c6af5360b46c4472b52c6c4205801f60.shtml"
-    },
-    {
-      "title": "Wildlife Photographer of the Year：14天提醒",
-      "summary": "本届10月19日开放，仍征稿，2026年12月3日19:30北京时间／11:30 GMT截止，剩14天。截止日18–26岁成人组免报名费，不限摄影专业，最多25张；17岁及以下需查青年组规则。先挑3–5张野生动物、自然景观或栖息地照片，核对时间、地点、原始文件。家养宠物、农场动物、栽培植物不符合一般要求，不得加入AI生成内容。建议11月29日前完成首轮准备，留时间检查说明及上传。官网配图未可靠加载，可从赛事页查看。完整规则：https://www.nhm.ac.uk/wildlife-photographer-of-the-year/competition/rules.html",
+      "title": "Concrete in Life 2026/27：约14天提醒",
+      "summary": "全球线上个人参赛，报名时满18岁，免费，不限学校专业，相机手机均可。本届10月6日开放，截止北京时间2026年12月5日07:59:59／12月4日23:59:59 GMT，约14天。方向为城市与基础设施、混凝土与日常生活、混凝土的美与设计。可筛校园建筑、天际线、桥梁2–3张，突出混凝土与光影，备标题说明及城市国家。JPG/JPEG/PNG单文件≤15MB，留原片元数据，不接受AI生成；可识别人像需明确同意。建议11月30日前提交。原文配图Celbert Palaganas的Pillars Across the Sea（菲律宾宿务）为2025/26届总冠军，仅往届参考。规则：https://gccassociation.org/concrete-in-life-2026-27-terms-and-conditions/",
       "date_kind": "deadline",
-      "date_label": "投稿截止 12/03 19:30 北京时间",
-      "date_iso": "2026-12-03",
-      "source_name": "自然历史博物馆官方赛事与投稿",
-      "source_url": "https://www.nhm.ac.uk/wildlife-photographer-of-the-year/competition.html"
+      "date_label": "投稿截止 12/05 07:59:59 北京时间",
+      "date_iso": "2026-12-05",
+      "source_name": "GCCA直接投稿与完整规则",
+      "source_url": "https://gccassociation.org/cil2627entryform/"
     }
   ],
-  "issue": 136,
-  "sourceMessageId": "26df6705-eb93-5d01-bb5b-a09bd5dd1650",
-  "published_at": "2026-11-19T03:45:14.518Z"
+  "issue": 137,
+  "sourceMessageId": "c066c4ba-89eb-56d4-814c-168babcfcd98",
+  "published_at": "2026-11-21T01:47:45.898Z"
 }
