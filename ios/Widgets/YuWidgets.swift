@@ -38,7 +38,7 @@ struct WidgetView: View {
         GeometryReader { geometry in
             let full = expanded && family != .systemLarge
             let gap: CGFloat = full ? 7 : 5
-            let rowHeight: CGFloat = full ? min(62, max(36, (geometry.size.height - 126 - gap * 8) / 9)) : (family == .systemLarge ? 32 : 24)
+            let rowHeight: CGFloat = full ? 42 : (family == .systemLarge ? 32 : 24)
             VStack(alignment: .leading, spacing: gap) {
                 HStack {
                     Text(entry.feed?.date ?? "等待同步").font(.system(size: 14, weight: .semibold)).foregroundStyle(Color(red: 0.95, green: 0.77, blue: 0.54))
@@ -52,15 +52,23 @@ struct WidgetView: View {
                             Text(entry.feed?.voice ?? "今天有哪些值得留意的机会？").font(.system(size: 11)).foregroundStyle(Color(red: 0.72, green: 0.83, blue: 0.82)).lineLimit(1)
                         }
                         Spacer(minLength: 8)
-                        Image("Robot").resizable().scaledToFit().frame(width: 57, height: 44)
+                        if !full { Image("Robot").resizable().scaledToFit().frame(width: 57, height: 44) }
                     }.padding(.vertical, 5)
+                        .overlay(alignment: .topTrailing) {
+                            if full {
+                                Image("Robot").resizable().scaledToFit()
+                                    .frame(width: 100, height: 77)
+                                    .offset(x: -63, y: -16)
+                            }
+                        }
+                        .padding(.bottom, full ? 16 : 0)
                 }
                 ForEach(Array(rows), id: \.offset) { index, item in
                     HStack(spacing: 8) {
                         Text(String(format: "%02d", index + 1)).font(.system(size: 13, weight: .semibold, design: .monospaced)).foregroundStyle(Color(red: 0.39, green: 0.83, blue: 0.75)).frame(width: 22)
                         Rectangle().fill(Color.white.opacity(0.15)).frame(width: 1, height: 20)
                         VStack(alignment: .leading, spacing: 3) {
-                            Text(item.title).font(.system(size: full ? 14 : 12, weight: .semibold)).foregroundStyle(.white).lineLimit(1)
+                            Text(item.title).font(.system(size: full ? 13 : 12, weight: .semibold)).foregroundStyle(.white).lineLimit(1)
                             if full {
                                 Text(item.summary ?? "查看完整日报了解参与条件").font(.system(size: 11)).foregroundStyle(Color(red: 0.72, green: 0.83, blue: 0.82)).lineLimit(1)
                             }
@@ -74,7 +82,8 @@ struct WidgetView: View {
                 Spacer(minLength: 0)
                 HStack { Text("把好奇变成行动。"); Spacer(); Text("全部 \(entry.feed?.items.count ?? 0) 条 ›") }.font(.system(size: 10)).foregroundStyle(Color(red: 0.65, green: 0.8, blue: 0.77))
             }
-        }.environment(\.colorScheme, .dark)
+        }.padding(family != .systemMedium && family != .systemLarge ? 18 : 0)
+            .environment(\.colorScheme, .dark)
             .containerBackground(LinearGradient(colors: [Color(red: 0.025, green: 0.14, blue: 0.16), Color(red: 0.02, green: 0.075, blue: 0.1)], startPoint: .topLeading, endPoint: .bottomTrailing), for: .widget)
     }
 }
@@ -99,6 +108,7 @@ struct FullPageBrief: Widget {
             .configurationDisplayName("全屏日报 · 九条")
             .description("竖向超大尺寸 · 第1–9条 · v0.2")
             .supportedFamilies([.systemExtraLargePortrait])
+            .contentMarginsDisabled()
     }
 }
 

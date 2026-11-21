@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "title": 13,
+  "summary": 11,
+  "date": 11,
+  "greeting": 24,
+  "rowHeight": 42,
+  "rowGap": 7,
+  "padding": 18,
+  "headerGap": 16,
+  "robotSize": 100,
+  "robotX": -63,
+  "robotY": -16,
+  "count": 9,
+  "height": 600
+}
