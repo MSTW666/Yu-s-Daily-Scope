@@ -47,7 +47,7 @@ struct Home: View {
             NavigationStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("YU’S DAILY SCOPE").font(.caption.monospaced()).foregroundStyle(mint)
+                        Text("DAILYSCOPE").font(.caption.monospaced()).foregroundStyle(mint)
                         Text(store.brief?.greeting ?? "小宇，早上好。").font(.largeTitle.bold())
                         Text(store.brief?.voice ?? "YU-1 正在为你查看今天的机会。").foregroundStyle(.secondary)
                         HStack { Text(store.brief?.date ?? ""); Spacer(); Text(store.status) }.font(.caption)
@@ -68,6 +68,7 @@ struct Home: View {
                     .refreshable { await store.refresh() }.task { await store.refresh() }
             }.tabItem { Label("今日", systemImage: "sun.max") }
             Preferences().tabItem { Label("我的偏好", systemImage: "slider.horizontal.3") }
+            CollectionDemo().tabItem { Label("立即搜集", systemImage: "sparkle.magnifyingglass") }
         }
     }
 }

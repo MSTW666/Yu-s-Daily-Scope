@@ -49,6 +49,7 @@ struct WidgetView: View {
                     HStack(alignment: .center) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(entry.feed?.greeting ?? "小宇，早上好。").font(.system(size: full ? 24 : 20, weight: .bold)).foregroundStyle(.white).lineLimit(1)
+                            Text("今天为你收集到了 \(entry.feed?.items.count ?? 0) 条机会").font(.system(size: 11)).foregroundStyle(Color(red: 0.72, green: 0.83, blue: 0.82)).lineLimit(1)
                             Text(entry.feed?.voice ?? "今天有哪些值得留意的机会？").font(.system(size: 11)).foregroundStyle(Color(red: 0.72, green: 0.83, blue: 0.82)).lineLimit(1)
                         }
                         Spacer(minLength: 8)

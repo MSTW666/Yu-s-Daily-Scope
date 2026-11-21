@@ -15,7 +15,7 @@ targets:
         MARKETING_VERSION: '0.2.0'
         CURRENT_PROJECT_VERSION: '3'
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleDisplayName: 小宇日报
+        INFOPLIST_KEY_CFBundleDisplayName: DailyScope
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         SWIFT_VERSION: '5.0'
     dependencies:
