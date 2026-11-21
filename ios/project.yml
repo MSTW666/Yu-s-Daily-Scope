@@ -1,0 +1,29 @@
+name: YuDailyScope
+options:
+  bundleIdPrefix: com.mstw666
+  deploymentTarget:
+    iOS: '17.0'
+targets:
+  YuDailyScope:
+    type: application
+    platform: iOS
+    sources: [App]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mstw666.yudailyscope
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: 小宇日报
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        SWIFT_VERSION: '5.0'
+    dependencies:
+      - target: YuWidgets
+  YuWidgets:
+    type: app-extension
+    platform: iOS
+    sources: [Widgets]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mstw666.yudailyscope.widgets
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Widgets/Info.plist
+        SWIFT_VERSION: '5.0'

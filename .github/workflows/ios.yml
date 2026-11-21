@@ -1,0 +1,22 @@
+name: Build iPhone IPA
+on:
+  push:
+    paths: ['ios/**', '.github/workflows/ios.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install project generator
+        run: brew install xcodegen
+      - name: Build unsigned IPA for Sideloadly
+        run: bash ios/build-ipa.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: YuDailyScope-Sideloadly
+          path: ios/YuDailyScope.ipa
+          retention-days: 14
