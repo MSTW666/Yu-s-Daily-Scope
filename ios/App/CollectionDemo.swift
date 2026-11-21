@@ -147,6 +147,30 @@ struct DemoResponse: Decodable {
                 stage = "卡片来源校验失败，本次结果未采用。请重试。"
                 return
             }
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = .current
+            formatter.dateFormat = "yyyy-MM-dd"
+            let day = formatter.string(from: .now)
+            let nickname = UserDefaults.standard.string(forKey: "nickname") ?? "小宇"
+            var merged: [Opportunity] = []
+            if let saved = UserDefaults.standard.data(forKey: "personalBrief"),
+               let previous = try? JSONDecoder().decode(Brief.self, from: saved), previous.date == day {
+                merged = previous.items
+            }
+            for card in parsed.items {
+                let detail = [card.summary, "费用：" + card.fee, "资格：" + card.eligibility,
+                              "推荐理由：" + card.reason, card.uncertainty.isEmpty ? "" : "待核实：" + card.uncertainty]
+                    .filter { !$0.isEmpty }.joined(separator: "\n\n")
+                let item = Opportunity(title: card.title, summary: detail, date_label: card.dateLabel, source_url: card.sourceURL)
+                if let index = merged.firstIndex(where: { $0.source_url == card.sourceURL && $0.title == card.title }) {
+                    merged[index] = item
+                } else { merged.append(item) }
+            }
+            let personal = Brief(date: day, greeting: "\(nickname)，早上好。", voice: parsed.coverage, items: merged)
+            let personalData = try JSONEncoder().encode(personal)
+            UserDefaults.standard.set(personalData, forKey: "personalBrief")
+            NotificationCenter.default.post(name: .personalBriefUpdated, object: nil)
             cards = parsed.items
             coverage = parsed.coverage
             text = answer
@@ -154,7 +178,7 @@ struct DemoResponse: Decodable {
             queries = searches.sorted()
             completedAt = .now
             evidence = "搜索工具调用 \(searchCalls) 次 · 链接读取调用 \(readCalls) 次 · 来源 \(found.count) 个"
-            stage = "已取得联网结果，活动真实性和覆盖面仍需对照原文验证。"
+            stage = "已加入今日，共 \(merged.count) 条机会。活动条件仍需核对原文。"
         } catch {
             stage = "搜集未完成：\(error.localizedDescription)。上一份结果仍保留。"
         }

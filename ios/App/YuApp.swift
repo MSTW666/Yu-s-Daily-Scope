@@ -17,11 +17,22 @@ let endpoint = URL(string: "https://mstw666.github.io/Yu-s-Daily-Scope/data/brie
 let ink = Color(red: 0.025, green: 0.075, blue: 0.09)
 let mint = Color(red: 0.39, green: 0.83, blue: 0.75)
 let amber = Color(red: 0.95, green: 0.77, blue: 0.54)
+extension Notification.Name {
+    static let personalBriefUpdated = Notification.Name("personalBriefUpdated")
+}
 
 @MainActor final class DailyStore: ObservableObject {
     @Published var brief: Brief?
     @Published var status = "正在读取日报"
+    func loadPersonal() -> Bool {
+        guard let data = UserDefaults.standard.data(forKey: "personalBrief"),
+              let saved = try? JSONDecoder().decode(Brief.self, from: data) else { return false }
+        brief = saved
+        status = "个人搜集 · 本机保存"
+        return true
+    }
     func refresh() async {
+        if loadPersonal() { return }
         if brief == nil, let saved = UserDefaults.standard.data(forKey: "brief") {
             brief = try? JSONDecoder().decode(Brief.self, from: saved)
         }
@@ -29,6 +40,7 @@ let amber = Color(red: 0.95, green: 0.77, blue: 0.54)
             var request = URLRequest(url: endpoint, cachePolicy: .reloadIgnoringLocalCacheData)
             request.timeoutInterval = 20
             let (data, response) = try await URLSession.shared.data(for: request)
+            if loadPersonal() { return }
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw URLError(.badServerResponse) }
             brief = try JSONDecoder().decode(Brief.self, from: data)
             UserDefaults.standard.set(data, forKey: "brief")
@@ -42,13 +54,15 @@ let amber = Color(red: 0.95, green: 0.77, blue: 0.54)
 }
 struct Home: View {
     @StateObject private var store = DailyStore()
+    @AppStorage("nickname") private var nickname = "小宇"
     var body: some View {
         TabView {
             NavigationStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("DAILYSCOPE").font(.caption.monospaced()).foregroundStyle(mint)
-                        Text(store.brief?.greeting ?? "小宇，早上好。").font(.largeTitle.bold())
+                        Text("\(nickname)，早上好。").font(.largeTitle.bold())
+                        Text("为你整理了 \(store.brief?.items.count ?? 0) 条机会").font(.subheadline).foregroundStyle(.secondary)
                         Text(store.brief?.voice ?? "YU-1 正在为你查看今天的机会。").foregroundStyle(.secondary)
                         HStack { Text(store.brief?.date ?? ""); Spacer(); Text(store.status) }.font(.caption)
                         ForEach(Array((store.brief?.items ?? []).enumerated()), id: \.element.id) { index, item in
@@ -66,6 +80,9 @@ struct Home: View {
                     }.padding(22)
                 }.background(ink).navigationTitle("今日简报").navigationBarTitleDisplayMode(.inline)
                     .refreshable { await store.refresh() }.task { await store.refresh() }
+                    .onReceive(NotificationCenter.default.publisher(for: .personalBriefUpdated)) { _ in
+                        _ = store.loadPersonal()
+                    }
             }.tabItem { Label("今日", systemImage: "sun.max") }
             Preferences().tabItem { Label("我的偏好", systemImage: "slider.horizontal.3") }
             CollectionDemo().tabItem { Label("立即搜集", systemImage: "sparkle.magnifyingglass") }
