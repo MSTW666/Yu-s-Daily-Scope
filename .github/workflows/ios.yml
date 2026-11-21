@@ -11,6 +11,13 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Select and verify iOS 27 SDK
+        run: |
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          sips -s format jpeg ios/App/Assets.xcassets/AppIcon.appiconset/Icon.png --out /tmp/icon.jpg
+          sips -s format png /tmp/icon.jpg --out ios/App/Assets.xcassets/AppIcon.appiconset/Icon.png
       - name: Install project generator
         run: brew install xcodegen
       - name: Build unsigned IPA for Sideloadly

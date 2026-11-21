@@ -39,7 +39,7 @@ struct WidgetView: View {
         }.containerBackground(Color(red: 0.025, green: 0.075, blue: 0.09), for: .widget)
     }
 }
-@main struct YuWidgets: Widget {
+struct YuWidgets: Widget {
     let kind = "YuDailyScope"
     private var sizes: [WidgetFamily] {
         if #available(iOS 27.0, *) { return [.systemLarge, .systemMedium, .systemExtraLargePortrait] }
@@ -49,6 +49,24 @@ struct WidgetView: View {
         StaticConfiguration(kind: kind, provider: Provider()) { WidgetView(entry: $0) }
             .configurationDisplayName("小宇日报").description("大号前六条，中号接续后三条")
             .supportedFamilies(sizes)
+    }
+}
+
+@available(iOS 27.0, *)
+struct FullPageBrief: Widget {
+    let kind = "YuDailyScopeFullPageV3"
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { WidgetView(entry: $0) }
+            .configurationDisplayName("全屏日报 · 九条")
+            .description("竖向超大尺寸 · 第1–9条 · v0.2")
+            .supportedFamilies([.systemExtraLargePortrait])
+    }
+}
+
+@main struct DailyWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        YuWidgets()
+        if #available(iOS 27.0, *) { FullPageBrief() }
     }
 }
 

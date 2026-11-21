@@ -11,6 +11,9 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mstw666.yudailyscope
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MARKETING_VERSION: '0.2.0'
+        CURRENT_PROJECT_VERSION: '3'
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: 小宇日报
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
