@@ -9,7 +9,7 @@ struct Row: Decodable {
     let date_iso: String?
     let date_kind: String?
     var shortDate: String {
-        guard let iso = date_iso, iso.count >= 10 else { return "待确认" }
+        guard let iso = date_iso, iso.count >= 10 else { return date_label ?? "待确认" }
         let date = String(iso.dropFirst(5)).replacingOccurrences(of: "-", with: "/")
         let prefix = date_kind == "deadline" ? "截止 " : ""
         return prefix + date
@@ -18,14 +18,14 @@ struct Row: Decodable {
 struct Entry: TimelineEntry { let date: Date; let feed: Feed? }
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> Entry { Entry(date: .now, feed: nil) }
-    func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) { completion(placeholder(in: context)) }
+    func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
+        let feed = WidgetBridge.read().flatMap { try? JSONDecoder().decode(Feed.self, from: $0) }
+        completion(Entry(date: .now, feed: feed))
+    }
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        Task {
-            let url = URL(string: "https://mstw666.github.io/Yu-s-Daily-Scope/data/briefing.json")!
-            let data = try? await URLSession.shared.data(from: url).0
-            let feed = data.flatMap { try? JSONDecoder().decode(Feed.self, from: $0) }
+        let data = WidgetBridge.read()
+        let feed = data.flatMap { try? JSONDecoder().decode(Feed.self, from: $0) }
             completion(Timeline(entries: [Entry(date: .now, feed: feed)], policy: .after(.now.addingTimeInterval(1800))))
-        }
     }
 }
 struct WidgetView: View {
@@ -43,7 +43,7 @@ struct WidgetView: View {
                 HStack {
                     Text(entry.feed?.date ?? "等待同步").font(.system(size: 14, weight: .semibold)).foregroundStyle(Color(red: 0.95, green: 0.77, blue: 0.54))
                     Spacer()
-                    Text("● 已读取").font(.system(size: 10)).foregroundStyle(Color(red: 0.39, green: 0.83, blue: 0.75))
+                    Text(entry.feed == nil ? "等待 App 同步" : "● 个人日报").font(.system(size: 10)).foregroundStyle(Color(red: 0.39, green: 0.83, blue: 0.75))
                 }
                 if expanded {
                     HStack(alignment: .center) {

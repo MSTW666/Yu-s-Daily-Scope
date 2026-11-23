@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 struct Opportunity: Codable, Identifiable {
     var id: String { title }
@@ -24,11 +25,23 @@ extension Notification.Name {
 @MainActor final class DailyStore: ObservableObject {
     @Published var brief: Brief?
     @Published var status = "正在读取日报"
+    @Published var widgetStatus = ""
+    func syncWidget() {
+        guard var personal = brief else { return }
+        let name = UserDefaults.standard.string(forKey: "nickname") ?? "小宇"
+        personal = Brief(date: personal.date, greeting: "\(name)，早上好。", voice: personal.voice, items: personal.items)
+        do {
+            try WidgetBridge.write(JSONEncoder().encode(personal))
+            WidgetCenter.shared.reloadAllTimelines()
+            widgetStatus = "已保存组件数据并请求刷新"
+        } catch { widgetStatus = error.localizedDescription }
+    }
     func loadPersonal() -> Bool {
         guard let data = UserDefaults.standard.data(forKey: "personalBrief"),
               let saved = try? JSONDecoder().decode(Brief.self, from: data) else { return false }
         brief = saved
         status = "个人搜集 · 本机保存"
+        syncWidget()
         return true
     }
     func refresh() async {
@@ -65,6 +78,10 @@ struct Home: View {
                         Text("为你整理了 \(store.brief?.items.count ?? 0) 条机会").font(.subheadline).foregroundStyle(.secondary)
                         Text(store.brief?.voice ?? "YU-1 正在为你查看今天的机会。").foregroundStyle(.secondary)
                         HStack { Text(store.brief?.date ?? ""); Spacer(); Text(store.status) }.font(.caption)
+                        if !store.widgetStatus.isEmpty {
+                            Text(store.widgetStatus).font(.caption).foregroundStyle(amber)
+                        }
+                        Button("同步桌面组件") { store.syncWidget() }.disabled(store.brief == nil)
                         ForEach(Array((store.brief?.items ?? []).enumerated()), id: \.element.id) { index, item in
                             NavigationLink { Detail(item: item) } label: {
                                 HStack(alignment: .top, spacing: 12) {
@@ -83,6 +100,7 @@ struct Home: View {
                     .onReceive(NotificationCenter.default.publisher(for: .personalBriefUpdated)) { _ in
                         _ = store.loadPersonal()
                     }
+                    .onChange(of: nickname) { _, _ in store.syncWidget() }
             }.tabItem { Label("今日", systemImage: "sun.max") }
             Preferences().tabItem { Label("我的偏好", systemImage: "slider.horizontal.3") }
             CollectionDemo().tabItem { Label("立即搜集", systemImage: "sparkle.magnifyingglass") }

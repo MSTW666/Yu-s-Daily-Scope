@@ -7,10 +7,11 @@ targets:
   YuDailyScope:
     type: application
     platform: iOS
-    sources: [App]
+    sources: [App, Shared]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mstw666.yudailyscope
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         MARKETING_VERSION: '0.2.0'
         CURRENT_PROJECT_VERSION: '3'
@@ -23,10 +24,11 @@ targets:
   YuWidgets:
     type: app-extension
     platform: iOS
-    sources: [Widgets]
+    sources: [Widgets, Shared]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mstw666.yudailyscope.widgets
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Widgets/Info.plist
         SWIFT_VERSION: '5.0'
