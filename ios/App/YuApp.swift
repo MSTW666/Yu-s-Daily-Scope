@@ -86,7 +86,7 @@ struct Home: View {
             NavigationStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("DAILYSCOPE").font(.caption.monospaced()).foregroundStyle(mint)
+                        Text("SCOPE").font(.caption.monospaced()).foregroundStyle(mint)
                         Text("\(nickname)，早上好。").font(.largeTitle.bold())
                         Text("为你整理了 \(store.brief?.items.count ?? 0) 条机会").font(.subheadline).foregroundStyle(.secondary)
                         Text(store.brief?.voice ?? "YU-1 正在为你查看今天的机会。").foregroundStyle(.secondary)

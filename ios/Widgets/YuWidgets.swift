@@ -118,7 +118,7 @@ struct YuWidgets: Widget {
     }
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: PersonalWidgetSettings.self, provider: PersonalProvider()) { WidgetView(entry: $0) }
-            .configurationDisplayName("小宇日报").description("大号前六条，中号接续后三条")
+            .configurationDisplayName("Scope").description("大号前六条，中号接续后三条")
             .supportedFamilies(sizes)
     }
 }
