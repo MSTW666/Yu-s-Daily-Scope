@@ -26,6 +26,19 @@ extension Notification.Name {
     @Published var brief: Brief?
     @Published var status = "正在读取日报"
     @Published var widgetStatus = ""
+    func copyWidgetSnapshot() {
+        guard let brief else { return }
+        let name = UserDefaults.standard.string(forKey: "nickname") ?? "小宇"
+        let compactItems = brief.items.map {
+            Opportunity(title: $0.title, summary: String($0.summary.prefix(70)), date_label: $0.date_label, source_url: nil)
+        }
+        let snapshot = Brief(date: brief.date, greeting: "\(name)，早上好。", voice: brief.voice, items: compactItems)
+        do {
+            let data = try JSONEncoder().encode(snapshot)
+            UIPasteboard.general.string = String(data: data, encoding: .utf8)
+            widgetStatus = "已复制。长按桌面组件 → 编辑小组件 → 将内容粘贴到日报同步内容。"
+        } catch { widgetStatus = "复制失败，请重试。" }
+    }
     func syncWidget() {
         guard var personal = brief else { return }
         let name = UserDefaults.standard.string(forKey: "nickname") ?? "小宇"
@@ -41,7 +54,7 @@ extension Notification.Name {
               let saved = try? JSONDecoder().decode(Brief.self, from: data) else { return false }
         brief = saved
         status = "个人搜集 · 本机保存"
-        syncWidget()
+        widgetStatus = "免费签名使用手动同步：复制后在组件设置粘贴。"
         return true
     }
     func refresh() async {
@@ -81,7 +94,7 @@ struct Home: View {
                         if !store.widgetStatus.isEmpty {
                             Text(store.widgetStatus).font(.caption).foregroundStyle(amber)
                         }
-                        Button("同步桌面组件") { store.syncWidget() }.disabled(store.brief == nil)
+                        Button("复制日报到桌面组件") { store.copyWidgetSnapshot() }.disabled(store.brief == nil)
                         ForEach(Array((store.brief?.items ?? []).enumerated()), id: \.element.id) { index, item in
                             NavigationLink { Detail(item: item) } label: {
                                 HStack(alignment: .top, spacing: 12) {
@@ -100,7 +113,7 @@ struct Home: View {
                     .onReceive(NotificationCenter.default.publisher(for: .personalBriefUpdated)) { _ in
                         _ = store.loadPersonal()
                     }
-                    .onChange(of: nickname) { _, _ in store.syncWidget() }
+                    .onChange(of: nickname) { _, _ in store.widgetStatus = "称呼已更新，请重新复制同步内容并粘贴到组件。" }
             }.tabItem { Label("今日", systemImage: "sun.max") }
             Preferences().tabItem { Label("我的偏好", systemImage: "slider.horizontal.3") }
             CollectionDemo().tabItem { Label("立即搜集", systemImage: "sparkle.magnifyingglass") }

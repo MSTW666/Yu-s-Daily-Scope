@@ -1,5 +1,27 @@
 import WidgetKit
 import SwiftUI
+import AppIntents
+
+struct PersonalWidgetSettings: WidgetConfigurationIntent {
+    static var title: LocalizedStringResource = "个人日报同步"
+    static var description = IntentDescription("从 App 的今日页复制同步内容，再粘贴到此处。每次搜集更新后重新粘贴。")
+    @Parameter(title: "粘贴日报同步内容", default: "")
+    var snapshot: String
+}
+
+struct PersonalProvider: AppIntentTimelineProvider {
+    func placeholder(in context: Context) -> Entry { Entry(date: .now, feed: nil) }
+    func snapshot(for configuration: PersonalWidgetSettings, in context: Context) async -> Entry {
+        makeEntry(configuration)
+    }
+    func timeline(for configuration: PersonalWidgetSettings, in context: Context) async -> Timeline<Entry> {
+        Timeline(entries: [makeEntry(configuration)], policy: .never)
+    }
+    private func makeEntry(_ configuration: PersonalWidgetSettings) -> Entry {
+        let feed = try? JSONDecoder().decode(Feed.self, from: Data(configuration.snapshot.utf8))
+        return Entry(date: .now, feed: feed)
+    }
+}
 
 struct Feed: Decodable { let date: String; let greeting: String?; let voice: String?; let items: [Row] }
 struct Row: Decodable {
@@ -79,7 +101,7 @@ struct WidgetView: View {
                         .background(Color.white.opacity(0.045), in: RoundedRectangle(cornerRadius: 10))
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.2, green: 0.55, blue: 0.56).opacity(0.45), lineWidth: 0.5))
                 }
-                if rows.isEmpty { Text("打开 App 查看日报").font(.caption).foregroundStyle(.white) }
+                if rows.isEmpty { Text(entry.feed == nil ? "在今日页复制同步内容，长按组件编辑并粘贴。" : "本期没有匹配机会").font(.caption).foregroundStyle(.white) }
                 Spacer(minLength: 0)
                 HStack { Text("把好奇变成行动。"); Spacer(); Text("全部 \(entry.feed?.items.count ?? 0) 条 ›") }.font(.system(size: 10)).foregroundStyle(Color(red: 0.65, green: 0.8, blue: 0.77))
             }
@@ -95,7 +117,7 @@ struct YuWidgets: Widget {
         return [.systemLarge, .systemMedium]
     }
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { WidgetView(entry: $0) }
+        AppIntentConfiguration(kind: kind, intent: PersonalWidgetSettings.self, provider: PersonalProvider()) { WidgetView(entry: $0) }
             .configurationDisplayName("小宇日报").description("大号前六条，中号接续后三条")
             .supportedFamilies(sizes)
     }
@@ -105,7 +127,7 @@ struct YuWidgets: Widget {
 struct FullPageBrief: Widget {
     let kind = "YuDailyScopeFullPageV3"
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { WidgetView(entry: $0) }
+        AppIntentConfiguration(kind: kind, intent: PersonalWidgetSettings.self, provider: PersonalProvider()) { WidgetView(entry: $0) }
             .configurationDisplayName("全屏日报 · 九条")
             .description("竖向超大尺寸 · 第1–9条 · v0.2")
             .supportedFamilies([.systemExtraLargePortrait])
