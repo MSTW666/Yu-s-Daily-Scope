@@ -193,6 +193,7 @@ struct CollectionDemo: View {
     @AppStorage("demoEligibility") private var eligibility = "本科在校学生"
     @AppStorage("nickname") private var nickname = "小宇"
     @State private var key = ""
+    @State private var keyStatus = ""
     var body: some View {
         NavigationStack {
             Form {
@@ -205,7 +206,19 @@ struct CollectionDemo: View {
                 }
                 Section("DeepSeek 联网 API") {
                     SecureField("输入自己的 API 密钥", text: $key).textInputAutocapitalization(.never).autocorrectionDisabled()
-                    Text("密钥仅在本次页面会话内使用。偏好会发送给 DeepSeek，调用会产生服务费用。返回结果仅供本次验证。").font(.footnote)
+                    Button("保存密钥到此 iPhone") {
+                        let value = key.trimmingCharacters(in: .whitespacesAndNewlines)
+                        guard !value.isEmpty else { keyStatus = "请先输入密钥。"; return }
+                        let status = APIKeyStore.save(value)
+                        keyStatus = status == 0 ? "已保存在系统钥匙串，下次自动读取。" : "保存失败（\(status)），可重试。"
+                    }.disabled(model.running)
+                    Button("删除已保存密钥", role: .destructive) {
+                        let status = APIKeyStore.delete()
+                        if status == 0 { key = "" }
+                        keyStatus = status == 0 ? "已删除，下次使用需重新输入。" : "删除失败（\(status)）。"
+                    }.disabled(model.running)
+                    if !keyStatus.isEmpty { Text(keyStatus).font(.footnote) }
+                    Text("密钥保存在本机系统钥匙串。偏好会发送给 DeepSeek，调用会产生服务费用。保存密钥不会验证余额或启用自动搜集。").font(.footnote)
                     Button(model.running ? "正在搜集……" : "按这些偏好立即搜集") {
                         Task { await model.collect(key: key, interests: interests, location: location, eligibility: eligibility, cost: cost) }
                     }.disabled(model.running)
@@ -251,6 +264,12 @@ struct CollectionDemo: View {
                     }
                 }
             }.scrollContentBackground(.hidden).background(ink).navigationTitle("立即搜集 · Demo")
+                .onAppear {
+                    if key.isEmpty {
+                        key = APIKeyStore.read()
+                        if !key.isEmpty { keyStatus = "已读取本机保存的密钥。" }
+                    }
+                }
         }
     }
 }
